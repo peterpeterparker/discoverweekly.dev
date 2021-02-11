@@ -12,38 +12,31 @@ const Box = (props) => {
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    // mesh.current.position.z = Math.sin(mesh.current.position.x * 0.2 + mesh.current.position.x * 0.15 + time * 0.2);
+    mesh.current.position.z = Math.sin(mesh.current.position.x * 0.2 + mesh.current.position.x * 0.15 + time * 0.2);
   });
 
   return (
     <mesh
       {...props}
-      ref={mesh}
-      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+      ref={mesh} castShadow={true}
+      scale={active ? [0,15, 0,15, 0,15] : [0.1, 0.1, 0.1]}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>
-      <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-      <meshStandardMaterial metalness={0.1} attach="material" color={hovered ? '#ec407a' : '#f4511e'} />
+      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+      <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color={hovered ? '#ec407a' : '#f4511e'} />
     </mesh>
   );
 };
-
-function rn(start, end) {
-  if (start == null) start = 0;
-  if (end == null) end = 1;
-  return start + Math.random() * (end - start);
-}
 
 const Camera = (props) => {
   const {camera} = useThree();
 
   useFrame((state) => {
-    const rate = 0.03;
-    // camera.position.y += (-1 * rate);
-    // camera.position.z += (-1 * rate);
+    const rate = -0.03;
+    camera.position.y = Math.max(camera.position.y + rate, -30);
 
-    // camera.lookAt(0,0,0)
+    console.log(camera.position.y);
   });
 
   return <perspectiveCamera {...props} />;
@@ -58,8 +51,8 @@ export const Background = () => {
   useEffect(() => {
     const tmp = [];
 
-    for (i = -2; i <= 2; i += 0.2) {
-      for (j = -2; j <= 2; j += 0.2) {
+    for (i = k = -30; k <= 30; i = ++k) {
+      for (j = l = -30; l <= 30; j = ++l) {
         tmp.push({
           x: i,
           y: j,
@@ -75,33 +68,22 @@ export const Background = () => {
 
   function renderScene() {
     return (
-      <Canvas>
+      <Canvas shadowMap>
+          <Camera position={[0, 250, 50]} far={50} />
 
           <ambientLight intensity={1} />
           <spotLight position={[10, 10, 10]} angle={0.15} />
 
           <group position={[0, 0, 0]}>
-          {/*{meshs.map((box, i) => {*/}
-          {/*  return <Box position={[box.x, box.y, box.z]} key={'yolo-' + i} />;*/}
-          {/*})}*/}
+          {meshs.map((box, i) => {
+            return <Box position={[box.x, box.y, box.z]} key={'yolo-' + i} />;
+          })}
 
           {/*<Box position={[meshs[0].x, meshs[0].y, meshs[0].z]} />*/}
           {/*<Box position={[-0.175, 0.615747330874139, -0.14]} />*/}
         </group>
 
-          <Box position={[-1.2, 0, 0]} />
-          <Box position={[1.2, 0, 0]} />
-
         <OrbitControls />
-
-        <Stars
-            radius={1}
-            depth={50}
-            count={5000}
-            factor={4}
-            saturation={0}
-            fade={true}
-        />
       </Canvas>
     );
   }

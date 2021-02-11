@@ -1,4 +1,4 @@
-// https://github.com/pmndrs/react-three-next/blob/main/next.config.js
+// Source: https://github.com/pmndrs/react-three-next/blob/main/next.config.js
 const debug = false;
 
 const match = (path) => {
