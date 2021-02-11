@@ -5,15 +5,18 @@ import Link from 'next/link';
 import {getAllPosts} from '../lib/playlist';
 
 import Header from '../components/header/Header';
+import {Layout} from "../components/layout/Layout";
 
 export const Home = ({allPosts}) => {
   return (
     <>
         <Header></Header>
 
+        <Layout></Layout>
+
         <div className={styles.container}>
 
-            <main>
+            <main style={{minHeight: '2000px'}}>
                 <div className="container mx-auto px-4 mb-16 flex justify-center flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
                         {allPosts.map((post) => {
