@@ -19,7 +19,7 @@ const Sphere = (props) => {
   return (
     <mesh {...props} ref={mesh} castShadow={true} scale={[0.1, 0.1, 0.1]}>
       <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-      <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color="#f4511e" />
+      <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color="#7C3AED" />
     </mesh>
   );
 };
@@ -54,7 +54,7 @@ export const Background = () => {
     setMeshs(spheres);
   }, []);
 
-  return <div className={styles.container}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
+  return <div className={`${styles.container} bg-dark`}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
 
   function renderScene() {
     return (

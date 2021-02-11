@@ -1,5 +1,3 @@
-import styles from '../styles/Home.module.scss';
-
 import Link from 'next/link';
 
 import {getAllPosts} from '../lib/playlist';
@@ -18,7 +16,7 @@ export const Home = ({allPosts}) => {
             <Hero></Hero>
         </Layout>
 
-        <div className={styles.container}>
+        <div>
 
             <main style={{minHeight: '2000px'}}>
                 <div className="container mx-auto px-4 mb-16 flex justify-center flex-col">
