@@ -11,25 +11,15 @@ const z = (x, y, factor) => {
 const Sphere = (props) => {
   const mesh = useRef();
 
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
-
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
     mesh.current.position.z = z(mesh.current.position.x, mesh.current.position.y, time);
   });
 
   return (
-    <mesh
-      {...props}
-      ref={mesh}
-      castShadow={true}
-      scale={active ? [0.25, 0.25, 0.25] : [0.1, 0.1, 0.1]}
-      onClick={(e) => setActive(!active)}
-      onPointerOver={(e) => setHover(true)}
-      onPointerOut={(e) => setHover(false)}>
+    <mesh {...props} ref={mesh} castShadow={true} scale={[0.1, 0.1, 0.1]}>
       <sphereGeometry attach="geometry" args={[1, 16, 16]} />
-      <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color={hovered ? '#ec407a' : '#f4511e'} />
+      <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color="#f4511e" />
     </mesh>
   );
 };
@@ -76,11 +66,11 @@ export const Background = () => {
 
         <group position={[0, 0, 0]}>
           {meshs.map((sphere, i) => {
-            return <Sphere position={[sphere.x, sphere.y, sphere.z]} key={`sphere-${i}`}/>;
+            return <Sphere position={[sphere.x, sphere.y, sphere.z]} key={`sphere-${i}`} />;
           })}
         </group>
 
-        <OrbitControls enabled={false}/>
+        <OrbitControls enabled={false} />
       </Canvas>
     );
   }
