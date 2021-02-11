@@ -80,7 +80,7 @@ export const Background = () => {
           })}
         </group>
 
-        <OrbitControls />
+        <OrbitControls enabled={false}/>
       </Canvas>
     );
   }
