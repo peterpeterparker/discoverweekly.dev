@@ -5,7 +5,7 @@ import {OrbitControls} from '@react-three/drei';
 import styles from './Background.module.scss';
 
 const z = (x, y, factor) => {
-  return Math.sin(x * 0.4 + y * 0.02 + factor * 0.2);
+  return Math.sin(x * 0.4 + y * 0.02 + factor * 0.6);
 };
 
 const Sphere = (props) => {
