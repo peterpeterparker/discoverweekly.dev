@@ -5,14 +5,18 @@ import Link from 'next/link';
 import {getAllPosts} from '../lib/playlist';
 
 import Header from '../components/header/Header';
+
 import {Layout} from "../components/layout/Layout";
+import {Hero} from "../components/hero/Hero";
 
 export const Home = ({allPosts}) => {
   return (
     <>
         <Header></Header>
 
-        <Layout></Layout>
+        <Layout>
+            <Hero></Hero>
+        </Layout>
 
         <div className={styles.container}>
 
