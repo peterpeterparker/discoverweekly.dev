@@ -1,61 +1,57 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from 'react';
+
+import Image from 'next/image';
+
+import config from '../../config.json';
 
 import styles from './Navbar.module.scss';
 
-import {PrimaryButton} from "../button/PrimaryButton";
+import {PrimaryButton} from '../button/PrimaryButton';
 
 export const Navbar = () => {
-    const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-    const scrolledRef = useRef(scrolled);
-    const setScrolledState = (data) => {
-        scrolledRef.current = data;
-        setScrolled(data);
-    };
+  const scrolledRef = useRef(scrolled);
+  const setScrolledState = (data) => {
+    scrolledRef.current = data;
+    setScrolled(data);
+  };
 
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll, {passive: true});
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, {passive: true});
 
-        return () => window.removeEventListener('scroll', handleScroll, false);
+    return () => window.removeEventListener('scroll', handleScroll, false);
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const handleScroll = () => {
-        const scrolledSize = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        const scrollTrigger = scrolledSize > 16;
+  const handleScroll = () => {
+    if (!scrolledRef) {
+      return;
+    }
 
-        if (scrolledRef.current !== scrollTrigger) {
-            setScrolledState(scrollTrigger);
-        }
-    };
+    const scrolledSize = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    const scrollTrigger = scrolledSize > 16;
 
-    return (
-        <nav className={`bg-black fixed top-0 w-full z-10 ${styles.nav} ${scrolled ? styles.fix : ''}`}>
-            <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-                <div className="relative flex items-center justify-between h-16">
-                    <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                        <div className="flex-shrink-0 flex items-center">
-                            <img
-                                className="block sm:hidden h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                                alt="Workflow"
-                            />
-                            <img
-                                className="hidden sm:block h-8 w-auto"
-                                src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
-                                alt="Workflow"
-                            />
-                        </div>
-                    </div>
-                    <div className="absolute inset-y-0 right-0 items-center pr-2 hidden sm:flex">
-                        <PrimaryButton>
-                            Add your playlist
-                        </PrimaryButton>
-                    </div>
-                </div>
-            </div>
+    if (scrolledRef.current !== scrollTrigger) {
+      setScrolledState(scrollTrigger);
+    }
+  };
 
-        </nav>
-    );
+  return (
+    <nav className={`bg-black fixed top-0 w-full z-10 ${styles.nav} ${scrolled ? styles.fix : ''}`}>
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-16">
+          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <a href="/" className="flex-shrink-0 flex items-center">
+              <Image src="/images/logo.svg" alt={`${config.title} logo`} width={48} height={48} />
+            </a>
+          </div>
+          <div className="absolute inset-y-0 right-0 items-center pr-2 hidden sm:flex">
+            <PrimaryButton>Share your playlist</PrimaryButton>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
 };

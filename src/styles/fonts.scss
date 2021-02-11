@@ -39,3 +39,10 @@
     /* Modern Browsers */ url("/fonts/open-sans-v17-latin-700.ttf") format("truetype"),
     /* Safari, Android, iOS */ url("/fonts/open-sans-v17-latin-700.svg#OpenSans") format("svg"); /* Legacy iOS */
 }
+
+:root {
+  font-family: "Open Sans", sans-serif;
+
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
