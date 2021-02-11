@@ -43,7 +43,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-            <a href="/" className="flex-shrink-0 flex items-center">
+            <a href="/" className="flex-shrink-0 flex items-center sm:pl-2">
               <Image src="/images/logo.svg" alt={`${config.title} logo`} width={48} height={48} />
             </a>
           </div>
