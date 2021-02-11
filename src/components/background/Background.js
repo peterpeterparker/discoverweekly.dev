@@ -1,10 +1,14 @@
 import React, {useRef, useState, useEffect} from 'react';
 import {Canvas, useFrame, useThree} from 'react-three-fiber';
-import {OrbitControls, Stars} from '@react-three/drei';
+import {OrbitControls} from '@react-three/drei';
 
 import styles from './Background.module.scss';
 
-const Box = (props) => {
+const z = (x, y, factor) => {
+  return Math.sin(x * 0.4 + y * 0.02 + factor * 0.2);
+};
+
+const Sphere = (props) => {
   const mesh = useRef();
 
   const [hovered, setHover] = useState(false);
@@ -12,14 +16,15 @@ const Box = (props) => {
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    mesh.current.position.z = Math.sin(mesh.current.position.x * 0.2 + mesh.current.position.x * 0.15 + time * 0.2);
+    mesh.current.position.z = z(mesh.current.position.x, mesh.current.position.y, time);
   });
 
   return (
     <mesh
       {...props}
-      ref={mesh} castShadow={true}
-      scale={active ? [0,15, 0,15, 0,15] : [0.1, 0.1, 0.1]}
+      ref={mesh}
+      castShadow={true}
+      scale={active ? [0, 15, 0, 15, 0, 15] : [0.1, 0.1, 0.1]}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>
@@ -35,8 +40,6 @@ const Camera = (props) => {
   useFrame((state) => {
     const rate = -0.03;
     camera.position.y = Math.max(camera.position.y + rate, -30);
-
-    console.log(camera.position.y);
   });
 
   return <perspectiveCamera {...props} />;
@@ -45,23 +48,20 @@ const Camera = (props) => {
 export const Background = () => {
   const [meshs, setMeshs] = useState();
 
-  let i, j, k, l, star, starsMaterial, starField;
-  const space = 35;
+  const elements = Array.from(Array(60).keys());
 
   useEffect(() => {
-    const tmp = [];
+    const spheres = [];
 
-    for (i = k = -30; k <= 30; i = ++k) {
-      for (j = l = -30; l <= 30; j = ++l) {
-        tmp.push({
-          x: i,
-          y: j,
-          z: Math.random() * 10,
-        });
-      }
-    }
+    elements.forEach((x) =>
+      elements.forEach((y) => {
+        const posX = x - elements.length / 2;
+        const posY = y - elements.length / 2;
+        spheres.push({x: posX, y: posY, z: z(posX, posY, 0)});
+      })
+    );
 
-    setMeshs(tmp);
+    setMeshs(spheres);
   }, []);
 
   return <div className={styles.container}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
@@ -69,18 +69,15 @@ export const Background = () => {
   function renderScene() {
     return (
       <Canvas shadowMap>
-          <Camera position={[0, 250, 50]} far={50} />
+        <Camera position={[0, 250, 50]} far={50} />
 
-          <ambientLight intensity={1} />
-          <spotLight position={[10, 10, 10]} angle={0.15} />
+        <ambientLight intensity={1} />
+        <spotLight position={[10, 10, 10]} angle={0.15} />
 
-          <group position={[0, 0, 0]}>
-          {meshs.map((box, i) => {
-            return <Box position={[box.x, box.y, box.z]} key={'yolo-' + i} />;
+        <group position={[0, 0, 0]}>
+          {meshs.map((sphere, i) => {
+            return <Sphere position={[sphere.x, sphere.y, sphere.z]} key={`sphere-${i}`}/>;
           })}
-
-          {/*<Box position={[meshs[0].x, meshs[0].y, meshs[0].z]} />*/}
-          {/*<Box position={[-0.175, 0.615747330874139, -0.14]} />*/}
         </group>
 
         <OrbitControls />
