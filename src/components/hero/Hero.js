@@ -2,10 +2,14 @@ import config from '../../config.json';
 
 import {PrimaryButton} from "../button/PrimaryButton";
 import {SecondaryButton} from "../button/SecondaryButton";
+import {Background} from "../background/Background";
 
 export const Hero = () => {
     return (
         <article className="w-full p-48">
+
+            <Background></Background>
+
             <div className="flex justify-center items-center flex-col">
                 <div className="mx-4 text-center">
                     <h1 className="font-bold text-4xl sm:text-6xl lg:text-8xl mb-2 sm:mb-4">{config.title}</h1>
