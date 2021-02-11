@@ -24,7 +24,7 @@ const Sphere = (props) => {
       {...props}
       ref={mesh}
       castShadow={true}
-      scale={active ? [0, 15, 0, 15, 0, 15] : [0.1, 0.1, 0.1]}
+      scale={active ? [0.25, 0.25, 0.25] : [0.1, 0.1, 0.1]}
       onClick={(e) => setActive(!active)}
       onPointerOver={(e) => setHover(true)}
       onPointerOut={(e) => setHover(false)}>

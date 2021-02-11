@@ -1,16 +1,18 @@
 import config from '../../config.json';
 
+import styles from './Hero.module.scss';
+
 import {PrimaryButton} from "../button/PrimaryButton";
 import {SecondaryButton} from "../button/SecondaryButton";
 import {Background} from "../background/Background";
 
 export const Hero = () => {
     return (
-        <article className="w-full p-48">
+        <article className={`w-full relative ${styles.height}`}>
 
             <Background></Background>
 
-            <div className="flex justify-center items-center flex-col">
+            <div className={`flex justify-center items-center flex-col mt-8 ${styles.position}`}>
                 <div className="mx-4 text-center">
                     <h1 className="font-bold text-4xl sm:text-6xl lg:text-8xl mb-2 sm:mb-4">{config.title}</h1>
                     <p className="sm:text-2xl lg:text-3xl mb-8">{config.description}</p>
