@@ -55,7 +55,7 @@ export const Card = ({playlist}) => {
             </div>
 
             <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
-            <a href="#" className="mt-4 block text-sm">
+            <a href="#" className="mt-4 block text-sm underline">
                 More...
             </a>
         </div>
