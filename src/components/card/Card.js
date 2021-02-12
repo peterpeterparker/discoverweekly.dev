@@ -10,7 +10,7 @@ export const Card = ({playlist}) => {
 
   return (
     <article className="flex items-center p-5">
-      <div className="w-full max-w-4xl p-8 mx-auto flex flex-col md:flex-row">
+      <div className="w-full max-w-4xl px-8 py-4 mx-auto flex flex-col md:flex-row">
         {renderProfile()}
 
         {renderPost()}
@@ -45,19 +45,19 @@ export const Card = ({playlist}) => {
   function renderPost() {
     return (
       <Link as={`/playlist/${slug}`} href="/playlist/[slug]">
-        <div className={`w-full rounded bg-gray-900 border-gray-600 border shadow-xl text-gray-300 hover:text-purple-300 md:text-left rounded-2xl p-8 flex justify-start cursor-pointer ${styles.post}`}>
-          <div className="md:w-5/6">
-            <div className="font-bold capitalize text-2xl mb-5 text-gray-100" dangerouslySetInnerHTML={{ __html: title }}></div>
+        <div className={`w-full rounded bg-gray-900 border-gray-600 border shadow-xl text-gray-300 hover:text-purple-300 md:text-left rounded-2xl p-8 cursor-pointer ${styles.post}`}>
+            <div className="w-full mb-5 flex justify-between items-center">
+                <div className="font-bold capitalize text-2xl text-gray-100" dangerouslySetInnerHTML={{ __html: title }}></div>
+
+                <button className="bg-gray-700 hover:bg-gray-600 border border-gray-600 hover:border-gray-300 text-gray-100 transition duration-500 rounded-full px-2 py-1 text-sm">
+                    Share
+                </button>
+            </div>
+
             <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
-              <a href="#" className="mt-4 block text-sm">
-                  More...
-              </a>
-          </div>
-          <div className="w-1/6 flex justify-end items-start m-0">
-            <button className="bg-gray-700 hover:bg-gray-600 border border-gray-600 hover:border-gray-300 text-gray-100 transition duration-500 rounded-full px-2 py-1 m-1 text-sm">
-              Share
-            </button>
-          </div>
+            <a href="#" className="mt-4 block text-sm">
+                More...
+            </a>
         </div>
       </Link>
     );
