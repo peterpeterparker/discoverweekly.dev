@@ -1,9 +1,9 @@
 import remark from 'remark';
 import html from 'remark-html';
 
-import {getAllPosts, getPostBySlug} from '../../lib/playlist';
+import {getAllPlaylists, getPlaylistBySlug} from '../../lib/playlist';
 
-const Post = ({content}) => {
+const Playlist = ({content}) => {
   return <div>
     <div
         dangerouslySetInnerHTML={{ __html: content }}
@@ -11,10 +11,10 @@ const Post = ({content}) => {
   </div>;
 };
 
-export default Post;
+export default Playlist;
 
 export async function getStaticProps({params}) {
-  const post = getPostBySlug(params.slug);
+  const post = getPlaylistBySlug(params.slug);
 
   const markdown = await remark()
     .use(html)
@@ -30,7 +30,7 @@ export async function getStaticProps({params}) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts();
+  const posts = getAllPlaylists();
 
   return {
     paths: posts.map((post) => {

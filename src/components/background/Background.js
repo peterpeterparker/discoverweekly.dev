@@ -54,7 +54,7 @@ export const Background = () => {
     setMeshs(spheres);
   }, []);
 
-  return <div className={`${styles.container} bg-dark`}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
+  return <div className={`${styles.container} bg-black`}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
 
   function renderScene() {
     return (

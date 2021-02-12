@@ -23,4 +23,8 @@ const withTM = require('next-transpile-modules')(
     { debug: debug, __unstable_matcher: match } // symlink-caused loops which cause memory to get bloated exponentially.
 )
 
-module.exports = withTM();
+module.exports = withTM({
+    images: {
+        domains: ['pbs.twimg.com'],
+    },
+});

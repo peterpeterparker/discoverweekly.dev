@@ -2,6 +2,7 @@
 date: "2021-02-22"
 name: "Francisco Quintero"
 description: "Ruby on Rails developer 😁✌🏽"
+profile: "https://pbs.twimg.com/profile_images/1176175322145918981/7QUIDN5j_400x400.png"
 twitter: "cescquintero"
 github: "cesc1989"
 website: "https://www.franciscoquintero.com"
