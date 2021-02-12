@@ -46,13 +46,16 @@ const Playlist = ({content}) => {
   }
 
   const applySize = (width, height) => {
-    const elements = document.querySelectorAll('deckgo-youtube');
+    const elements = document.querySelectorAll('div.video');
 
     if (elements) {
       Array.from(elements).forEach((element) => {
         element.style.minHeight = `${height}px`;
-        element.height = height;
-        element.width = width;
+        element.style.height = `${height}px`;
+        element.style.width = `${width}px`;
+
+        element.firstChild.height = height;
+        element.firstChild.width = width;
       });
     }
   }

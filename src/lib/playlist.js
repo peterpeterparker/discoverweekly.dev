@@ -98,7 +98,12 @@ const format = (content) => {
         const video = window.document.createElement('deckgo-youtube');
         video.setAttribute('src', `https://www.youtube.com/watch?v=${youtube?.[1]}`);
 
-        element.parentNode.replaceChild(video, element);
+        const div = window.document.createElement('div');
+        div.className = 'video';
+
+        div.appendChild(video);
+
+        element.parentNode.replaceChild(div, element);
       }
     }
 
