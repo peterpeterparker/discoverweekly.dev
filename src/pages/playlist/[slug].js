@@ -1,31 +1,22 @@
-import remark from 'remark';
-import html from 'remark-html';
+import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 
-import {getAllPlaylists, getPlaylistBySlug} from '../../lib/playlist';
+import {Layout} from "../../components/layout/Layout";
 
 const Playlist = ({content}) => {
-  return <div>
-    <div
-        dangerouslySetInnerHTML={{ __html: content }}
-    />
-  </div>;
+  return <Layout>
+    <main className="bg-black pt-32 text-white">
+      <div className="max-w-screen-md m-auto" dangerouslySetInnerHTML={{ __html: content }}></div>
+    </main>
+  </Layout>;
 };
 
 export default Playlist;
 
 export async function getStaticProps({params}) {
-  const post = getPlaylistBySlug(params.slug);
-
-  const markdown = await remark()
-    .use(html)
-    .process(post.content || '');
-  const content = markdown.toString();
+  const playlist = await getPlaylist(params);
 
   return {
-    props: {
-      ...post,
-      content,
-    },
+    props: playlist,
   };
 }
 

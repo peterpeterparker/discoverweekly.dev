@@ -9,7 +9,7 @@ import { JSDOM } from 'jsdom';
 
 const postsDirectory = join(process.cwd(), 'content', 'playlists');
 
-export const getPlaylistBySlug = (slug) => {
+const getPlaylistBySlug = (slug) => {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -29,6 +29,20 @@ export const getAllPlaylistsWithSummary = async () => {
   const promises = allPlaylists.map(playlist => summary(playlist));
 
   return await Promise.all(promises);
+}
+
+export const getPlaylist = async (playlist) => {
+  const post = getPlaylistBySlug(playlist.slug);
+
+  const markdown = await remark()
+      .use(html)
+      .process(post.content || '');
+  const content = format(markdown.toString());
+
+  return {
+    ...playlist,
+    content
+  };
 }
 
 const summary = async (playlist) => {
@@ -62,4 +76,22 @@ const shuffle = (playlists) => {
   }
 
   return playlists;
+}
+
+const format = (content) => {
+  const { window } = new JSDOM(`<!DOCTYPE html>${content}`);
+
+  const elements = window.document.querySelectorAll('*');
+
+  Array.from(elements)?.map(element => {
+    if (element.nodeName === 'HR') {
+        element.className =  'w-24 my-2 border-t-2 border-gray-600';
+    } else if (element.nodeName === 'H1') {
+        element.className = 'font-bold text-2xl lg:text-4xl mb-4 mt-8'
+    }
+
+    return element;
+  });
+
+  return window.document.documentElement.outerHTML;
 }

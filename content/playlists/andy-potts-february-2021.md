@@ -13,16 +13,20 @@ tags: #rock #psychedelic
 
 Listening to Tame Impala reminds me of being young, when times were simpler. Love that they're essentially a one man band, Kevin Parker. I've seen Tame Impala live twice and they were great!
 
-{% BgK_Er7WZVg %}
+{% youtube BgK_Er7WZVg %}
+
+*****
 
 # Radiohead
 
 Radiohead's Thom Yorke is a musical genius. The band has a great collection of weird and wonderful songs.
 
-{% 6hgVihWjK2c %}
+{% youtube 6hgVihWjK2c %}
+
+*****
 
 # Led Zeppelin
 
 A timeless band that I enjoy listening to with my Dad.
 
-{% FFDYuO53BUk %}
+{% youtube FFDYuO53BUk %}

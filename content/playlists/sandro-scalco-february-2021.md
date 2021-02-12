@@ -15,14 +15,18 @@ Relaxing Playlist, love to listen in the morning with a cup of coffee to kicksta
 
 {% spotify https://open.spotify.com/playlist/37i9dQZF1DX9RwfGbeGQwP?si=ID68cLG-SRWp1MVR_PeUNQ %}
 
+*****
+
 # Parov Stelar
 
 Motivation Boooooost!
 
-{% https://open.spotify.com/artist/65EXuYHVoehCKqp0kOS6px?si=wfPJvLCrSLe9FIueBVZVdQ %}
+{% spotify https://open.spotify.com/artist/65EXuYHVoehCKqp0kOS6px?si=wfPJvLCrSLe9FIueBVZVdQ %}
+
+*****
 
 # Bonobo - Kerala
 
 Deep Focus
 
-{% https://open.spotify.com/track/5DAjrJqXqYtgr67pVhmUeR?si=tYfNgVd3SdunuSs0RBnReQ %}
+{% spotify https://open.spotify.com/track/5DAjrJqXqYtgr67pVhmUeR?si=tYfNgVd3SdunuSs0RBnReQ %}

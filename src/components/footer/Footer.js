@@ -1,12 +1,9 @@
-import styles from './Footer.module.scss';
-
 import {Social} from '../social/Social';
-import config from '../../config.json';
 
 export const Footer = () => {
   return (
     <footer className="w-screen bg-black p-10 text-white text-sm flex flex-col items-center">
-      <hr className={`w-24 mt-2 ${styles.separator}`} />
+      <hr className="w-24 mt-2 border-t-2 border-gray-600" />
 
       <Social margin="my-16"></Social>
 
