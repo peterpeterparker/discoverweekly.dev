@@ -1,4 +1,4 @@
-import React, {useRef, useState, useEffect} from 'react';
+import React, {useRef, useState, useEffect, memo} from 'react';
 import {Canvas, useFrame, useThree} from 'react-three-fiber';
 import {OrbitControls} from '@react-three/drei';
 
@@ -35,6 +35,25 @@ const Camera = (props) => {
   return <perspectiveCamera {...props} />;
 };
 
+const Scene = memo(({meshs}) => {
+  return (
+    <Canvas shadowMap>
+      <Camera position={[0, 250, 50]} far={50} />
+
+      <ambientLight intensity={1} />
+      <spotLight position={[10, 10, 10]} angle={0.15} />
+
+      <group position={[0, 0, 0]}>
+        {meshs.map((sphere, i) => {
+          return <Sphere position={[sphere.x, sphere.y, sphere.z]} key={`sphere-${i}`} />;
+        })}
+      </group>
+
+      <OrbitControls enabled={false} />
+    </Canvas>
+  );
+});
+
 export const Background = () => {
   const [meshs, setMeshs] = useState();
 
@@ -54,24 +73,5 @@ export const Background = () => {
     setMeshs(spheres);
   }, []);
 
-  return <div className={`${styles.container} bg-black`}>{meshs && meshs.length > 0 ? renderScene() : undefined}</div>;
-
-  function renderScene() {
-    return (
-      <Canvas shadowMap>
-        <Camera position={[0, 250, 50]} far={50} />
-
-        <ambientLight intensity={1} />
-        <spotLight position={[10, 10, 10]} angle={0.15} />
-
-        <group position={[0, 0, 0]}>
-          {meshs.map((sphere, i) => {
-            return <Sphere position={[sphere.x, sphere.y, sphere.z]} key={`sphere-${i}`} />;
-          })}
-        </group>
-
-        <OrbitControls enabled={false} />
-      </Canvas>
-    );
-  }
+  return <div className={`${styles.container} bg-black`}>{meshs && meshs.length > 0 ? <Scene meshs={meshs}></Scene> : undefined}</div>;
 };

@@ -1,7 +1,7 @@
 .post {
   &:hover {
-    h1, p {
-      color: rgba(196, 181, 253, var(--tw-text-opacity));
+    h1, p, div {
+      color: inherit;
     }
   }
 }

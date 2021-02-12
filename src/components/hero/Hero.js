@@ -21,13 +21,13 @@ export const Hero = () => {
                         <PrimaryButton>
                             Share your playlist
                         </PrimaryButton>
-                        <SecondaryButton>
+                        <SecondaryButton color="bg-black bg-opacity-80 text-white hover:text-black hover:bg-purple-400">
                             Get playlists
                         </SecondaryButton>
                     </div>
                 </div>
 
-                <Social margin="m-8"></Social>
+                <Social margin="m-8" color={'text-white dark:text-white'}></Social>
             </div>
         </article>
     )

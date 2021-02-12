@@ -25,7 +25,7 @@ export const Profile = ({frontmatter, infoCss, imageCss}) => {
         href="https://twitter.com/{twitter}"
         rel="noopener norefferer"
         aria-label={`${name} - @${twitter}`}
-        className={`hover:text-purple-300 ${styles.twitter}`}>
+        className={`hover:text-purple-600 dark:hover:text-purple-300 ${styles.twitter}`}>
         {name}
       </a>
     ) : (

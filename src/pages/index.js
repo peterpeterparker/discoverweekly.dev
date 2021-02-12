@@ -15,13 +15,13 @@ export const Home = ({playlists}) => {
       <Layout>
         <Hero></Hero>
 
-        <main className="bg-black pt-10">
+        <main className="bg-gray-50 dark:bg-black pt-10">
           {playlists.map((playlist) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;
           })}
 
           <div className="w-full flex flex-col justify-center m-auto w-max py-16 items-center">
-            <p className="text-white block mb-2">Contribute now, share your best music tips!</p>
+            <p className="dark:text-white block mb-2">Contribute now, share your best music tips!</p>
 
             <PrimaryButton>Submit a pull request</PrimaryButton>
           </div>

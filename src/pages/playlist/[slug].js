@@ -10,7 +10,7 @@ import {formatDate} from "../../utils/date.utils";
 const Playlist = ({content, frontmatter}) => {
 
   return <Layout>
-    <main className="bg-black pt-16 text-white">
+    <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
       {renderTitle()}
 
       <Video content={content}></Video>
@@ -30,9 +30,9 @@ const Playlist = ({content, frontmatter}) => {
 
     return <section className="max-w-screen-md m-auto p-5">
       <h1 className="font-bold text-2xl xs:text-4xl sm:text-6xl lg:text-8xl my-2 sm:my-4">{name} Playlist</h1>
-      <p className="text-gray-200">{formatDate(date)}</p>
+      <p className="text-gray-600 dark:text-gray-400">{formatDate(date)}</p>
       {
-        tags ? <p className="text-gray-200">{tags}</p> : undefined
+        tags ? <p className="text-gray-600 dark:text-gray-400">{tags}</p> : undefined
       }
     </section>
   }

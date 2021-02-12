@@ -13,7 +13,7 @@ export const Theme = () => {
 
   return (
     <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')} className="absolute cursor-pointer top-1/2 right-0 sm:right-auto sm:left-1/2 transform -translate-y-2/4 sm:-translate-x-2/4">
-      <div className={`block w-10 h-6 rounded-full shadow-inner ${theme === 'light' ? 'bg-black' : 'bg-black'}`}></div>
+      <div className={`block w-10 h-6 rounded-full shadow-inner bg-gray-50 dark:bg-black`}></div>
 
       <span
           className={`${

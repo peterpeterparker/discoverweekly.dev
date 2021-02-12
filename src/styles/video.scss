@@ -2,6 +2,10 @@ div.video {
   display: inline-block;
   overflow: hidden;
   border-radius: 1rem;
-  border: 1px solid rgba(48, 54, 61);
+  border: 1px solid #e1e4e8;
   margin: 2rem 0;
+}
+
+html.dark div.video {
+  border: 1px solid rgba(48, 54, 61);
 }
