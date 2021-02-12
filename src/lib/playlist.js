@@ -9,6 +9,8 @@ import { JSDOM } from 'jsdom';
 
 const postsDirectory = join(process.cwd(), 'content', 'playlists');
 
+const youtubeMatch = /{%\syoutube\s(.*)\s%}/g;
+
 const getPlaylistBySlug = (slug) => {
   const realSlug = slug.replace(/\.md$/, '');
   const fullPath = join(postsDirectory, `${realSlug}.md`);
@@ -90,7 +92,16 @@ const format = (content) => {
         element.className = 'font-bold text-2xl lg:text-4xl mb-4 mt-8'
     } else if (element.nodeName === 'P') {
       element.className =  'break-words';
+
+      const youtube = youtubeMatch.exec(element.textContent);
+      if (youtube) {
+        const video = window.document.createElement('deckgo-youtube');
+        video.setAttribute('src', `https://www.youtube.com/watch?v=${youtube?.[1]}`);
+
+        element.parentNode.replaceChild(video, element);
+      }
     }
+
 
     return element;
   });

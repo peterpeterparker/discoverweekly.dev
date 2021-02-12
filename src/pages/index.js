@@ -15,7 +15,7 @@ export const Home = ({playlists}) => {
       <Layout>
         <Hero></Hero>
 
-        <main className="bg-black pt-10">
+        <main className="bg-black pt-10 min-h-screen">
           {playlists.map((playlist) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;
           })}
