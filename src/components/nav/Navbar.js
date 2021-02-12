@@ -7,6 +7,7 @@ import config from '../../config.json';
 import styles from './Navbar.module.scss';
 
 import {PrimaryButton} from '../button/PrimaryButton';
+import {Theme} from "../theme/Theme";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -46,8 +47,12 @@ export const Navbar = () => {
             <a href="/" className="flex-shrink-0 flex items-center sm:pl-2">
               <Image src="/images/logo.svg" alt={`${config.title} logo`} width={48} height={48} />
             </a>
+
           </div>
-          <div className="absolute inset-y-0 right-0 items-center pr-2 hidden sm:flex">
+
+          <Theme></Theme>
+
+          <div className="hidden sm:block">
             <PrimaryButton>Share your playlist</PrimaryButton>
           </div>
         </div>
