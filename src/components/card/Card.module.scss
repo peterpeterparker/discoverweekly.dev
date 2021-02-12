@@ -1,0 +1,32 @@
+.profile {
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+
+  @media (min-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.twitter {
+  max-width: 34rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (min-width: 768px) {
+    max-width: 10rem;
+    white-space: pre-wrap;
+    height: fit-content;
+    word-wrap: break-word;
+  }
+}
+
+.post {
+  &:hover {
+    p {
+      color: rgba(196, 181, 253, var(--tw-text-opacity));
+    }
+  }
+}
