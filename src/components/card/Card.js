@@ -3,6 +3,8 @@ import Image from 'next/image';
 
 import styles from './Card.module.scss';
 
+import {formatDate} from "../../utils/date.utils";
+
 export const Card = ({playlist}) => {
   const {slug, frontmatter, summary} = playlist;
   const {name, profile, twitter, date} = frontmatter;
@@ -32,11 +34,7 @@ export const Card = ({playlist}) => {
                 className={`text-gray-200 hover:text-purple-300 ${styles.twitter}`}>
                 {name}
             </a>
-            <p className="text-xs text-gray-200 md:mt-1">{new Intl.DateTimeFormat('en-US', {
-                year: "numeric",
-                month: "short",
-                day: "2-digit"
-            }).format(new Date(date))}</p>
+            <p className="text-xs text-gray-200 md:mt-1">{formatDate(date)}</p>
         </div>
       </div>
     );

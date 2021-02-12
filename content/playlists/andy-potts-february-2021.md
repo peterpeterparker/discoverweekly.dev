@@ -6,7 +6,7 @@ profile: "https://pbs.twimg.com/profile_images/1263753185358987264/oPOTUIOr_400x
 twitter: "AndyPotts_"
 github: "andypotts"
 website: "https://andy-potts.co.uk/"
-tags: #rock #psychedelic
+tags: "#rock #psychedelic"
 ---
 
 # Tame Impala

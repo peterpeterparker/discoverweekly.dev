@@ -1,147 +1,31 @@
-import React, {useRef, useEffect, useState} from 'react';
-
 import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 
 import {Layout} from "../../components/layout/Layout";
+import {Video} from "../../components/video/Video";
 
-import {useWindowSize} from '@react-hook/window-size';
+import {formatDate} from "../../utils/date.utils";
 
-import { defineCustomElements as deckDeckGoYoutubeElement } from '@deckdeckgo/youtube/dist/loader';
-deckDeckGoYoutubeElement();
-
-const Playlist = ({content}) => {
-
-  /* Video size */
-
-  const [windowWidth] = useWindowSize();
-  const [videoSize, setVideoSize] = useState(undefined);
-
-  const containerRef = useRef();
-
-  useEffect(() => {
-    onWindowResize();
-  }, [windowWidth, containerRef]);
-
-  useEffect(() => {
-    onVideoResize();
-  }, [videoSize]);
-
-  const onWindowResize = async () => {
-    if (!containerRef || !containerRef.current) {
-      return;
-    }
-
-    const css = window.getComputedStyle(containerRef.current);
-    const padding = parseInt(css.paddingLeft) + parseInt(css.paddingRight);
-
-    const width = Math.min(windowWidth, 768) - padding;
-    const height = (width * 9) / 16;
-
-    applySize(width, height);
-
-    setVideoSize({
-      width,
-      height
-    });
-  }
-
-  const applySize = (width, height) => {
-    const elements = document.querySelectorAll('div.video');
-
-    if (elements) {
-      Array.from(elements).forEach((element) => {
-        element.style.minHeight = `${height}px`;
-        element.style.height = `${height}px`;
-        element.style.width = `${width}px`;
-
-        element.firstChild.height = height;
-        element.firstChild.width = width;
-      });
-    }
-  }
-
-  const onVideoResize = async () => {
-    if (!videoSize) {
-      return;
-    }
-
-    const elements = document.querySelectorAll('deckgo-youtube');
-
-    if (!elements) {
-      return;
-    }
-
-    for (const element of Array.from(elements)) {
-      await element.updateIFrame(videoSize.width, videoSize.height);
-    }
-  }
-
-  /* Video lazy loading */
-
-  let videoObserver = undefined;
-
-  useEffect(() => {
-    if (!containerRef || !containerRef.current || !videoSize) {
-      return;
-    }
-
-    if (window && 'IntersectionObserver' in window) {
-      deferVideoIntersectionObserverLoad();
-    } else {
-      unfortunatelyLoadVideoNow();
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [containerRef, videoSize]);
-
-  const deferVideoIntersectionObserverLoad = () => {
-    videoObserver = new IntersectionObserver(onVideoIntersection, {
-      rootMargin: '100px 0px',
-      threshold: 0.25,
-    });
-
-    const elements = document.querySelectorAll('deckgo-youtube');
-
-    if (elements) {
-      Array.from(elements).forEach((element) => {
-        videoObserver.observe(element);
-      });
-    }
-  };
-
-  const unfortunatelyLoadVideoNow = async () => {
-    const elements = document.querySelectorAll('deckgo-youtube');
-
-    if (elements && elements.length > 0) {
-      const promises = Array.from(elements).map((element) => element.lazyLoadContent());
-      await Promise.all(promises);
-    }
-  };
-
-  const onVideoIntersection = async (entries) => {
-    if (!entries || entries.length <= 0) {
-      return;
-    }
-
-    await handleVideoIntersection(entries);
-  };
-
-  const handleVideoIntersection = async (entries) => {
-    for (const entry of entries) {
-      if (entry.isIntersecting) {
-        if (videoObserver && entry.target) {
-          await entry.target.lazyLoadContent();
-          videoObserver.unobserve(entry.target);
-        }
-      }
-    }
-  };
+const Playlist = ({content, frontmatter}) => {
 
   return <Layout>
     <main className="bg-black pt-16 text-white">
-      <div ref={containerRef} className="max-w-screen-md m-auto p-5" dangerouslySetInnerHTML={{ __html: content }}></div>
+      {renderTitle()}
+
+      <Video content={content}></Video>
     </main>
   </Layout>;
+
+  function renderTitle() {
+    const {name, tags, date} = frontmatter;
+
+    return <section className="max-w-screen-md m-auto p-5">
+      <h1 className="font-bold text-2xl xs:text-4xl sm:text-6xl lg:text-8xl my-2 sm:my-4">{name} Playlist</h1>
+      <p className="text-gray-200">{formatDate(date)}</p>
+      {
+        tags ? <p className="text-gray-200">{tags}</p> : undefined
+      }
+    </section>
+  }
 };
 
 export default Playlist;
