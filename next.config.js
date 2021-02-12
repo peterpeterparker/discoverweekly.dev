@@ -27,4 +27,8 @@ module.exports = withTM({
     images: {
         domains: ['pbs.twimg.com'],
     },
+    i18n: {
+        locales: ['en'],
+        defaultLocale: 'en',
+    }
 });
