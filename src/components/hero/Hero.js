@@ -15,9 +15,9 @@ export const Hero = () => {
 
             <div className={`flex justify-center items-center flex-col mt-8 ${styles.position}`}>
                 <div className="mx-4 text-center">
-                    <h1 className="font-bold text-4xl sm:text-6xl lg:text-8xl mb-2 sm:mb-4 text-white tracking-wide">{config.title}</h1>
+                    <h1 className="font-bold text-2xl xs:text-4xl sm:text-6xl lg:text-8xl mb-2 sm:mb-4 text-white tracking-wide">{config.title}</h1>
                     <p className="sm:text-2xl lg:text-3xl mb-8 text-white">{config.description}</p>
-                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center">
+                    <div className="flex flex-col items-center sm:flex-row sm:justify-center">
                         <PrimaryButton>
                             Share your playlist
                         </PrimaryButton>

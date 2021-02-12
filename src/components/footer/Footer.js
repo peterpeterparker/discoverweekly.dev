@@ -7,7 +7,7 @@ export const Footer = () => {
 
       <Social margin="my-16"></Social>
 
-      <div className="max-w-screen-md m-auto grid grid-cols-2">
+      <div className="max-w-screen-md m-auto flex flex-col-reverse md:grid md:grid-cols-2">
         {renderAbout()}
 
         {renderMore()}
@@ -17,7 +17,7 @@ export const Footer = () => {
 
   function renderAbout() {
     return (
-      <div className="mr-4">
+      <div className="md:mr-4">
         <p className="text-xl mb-2">About</p>
         <p className="font-light">
           Developed with passion by{' '}
@@ -71,7 +71,7 @@ export const Footer = () => {
             />
         </p>
 
-        <p className="font-light">
+        <p className="font-light mb-8">
           Looking for a simple and free time tracking app ⏱️? Try{' '}
           <a
             href="http://tietracker.app.link"
