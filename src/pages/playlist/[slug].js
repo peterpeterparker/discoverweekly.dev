@@ -3,6 +3,7 @@ import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 import {Layout} from "../../components/layout/Layout";
 import {Video} from "../../components/video/Video";
 import {Author} from "../../components/author/Author";
+import {SecondaryButton} from "../../components/button/SecondaryButton";
 
 import {formatDate} from "../../utils/date.utils";
 
@@ -15,6 +16,12 @@ const Playlist = ({content, frontmatter}) => {
       <Video content={content}></Video>
 
       <Author frontmatter={frontmatter}></Author>
+
+      <div className="max-w-screen-md m-auto p-5 mt-8 pb-10 flex justify-center">
+        <SecondaryButton>
+          Get more playlists
+        </SecondaryButton>
+      </div>
     </main>
   </Layout>;
 
