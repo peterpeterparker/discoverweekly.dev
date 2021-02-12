@@ -88,6 +88,8 @@ const format = (content) => {
         element.className =  'w-24 my-2 border-t-2 border-gray-600';
     } else if (element.nodeName === 'H1') {
         element.className = 'font-bold text-2xl lg:text-4xl mb-4 mt-8'
+    } else if (element.nodeName === 'P') {
+      element.className =  'break-words';
     }
 
     return element;

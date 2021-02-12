@@ -4,8 +4,8 @@ import {Layout} from "../../components/layout/Layout";
 
 const Playlist = ({content}) => {
   return <Layout>
-    <main className="bg-black pt-32 text-white">
-      <div className="max-w-screen-md m-auto" dangerouslySetInnerHTML={{ __html: content }}></div>
+    <main className="bg-black pt-16 text-white">
+      <div className="max-w-screen-md m-auto p-5" dangerouslySetInnerHTML={{ __html: content }}></div>
     </main>
   </Layout>;
 };
