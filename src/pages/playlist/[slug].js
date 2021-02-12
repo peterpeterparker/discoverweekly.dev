@@ -1,10 +1,10 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useRef, useEffect, useState} from 'react';
 
 import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 
 import {Layout} from "../../components/layout/Layout";
 
-import {useWindowSize} from 'react-use';
+import {useWindowSize} from '@react-hook/window-size';
 
 import { defineCustomElements as deckDeckGoYoutubeElement } from '@deckdeckgo/youtube/dist/loader';
 deckDeckGoYoutubeElement();
@@ -13,16 +13,52 @@ const Playlist = ({content}) => {
 
   /* Video size */
 
-  const {width} = useWindowSize();
+  const [windowWidth] = useWindowSize();
+  const [videoSize, setVideoSize] = useState(undefined);
 
-  const mainRef = useRef();
+  const containerRef = useRef();
 
   useEffect(() => {
     onWindowResize();
-  }, [width, mainRef]);
+  }, [windowWidth, containerRef]);
+
+  useEffect(() => {
+    onVideoResize();
+  }, [videoSize]);
 
   const onWindowResize = async () => {
-    if (!mainRef || !mainRef.current) {
+    if (!containerRef || !containerRef.current) {
+      return;
+    }
+
+    const css = window.getComputedStyle(containerRef.current);
+    const padding = parseInt(css.paddingLeft) + parseInt(css.paddingRight);
+
+    const width = Math.min(windowWidth, 768) - padding;
+    const height = (width * 9) / 16;
+
+    applySize(width, height);
+
+    setVideoSize({
+      width,
+      height
+    });
+  }
+
+  const applySize = (width, height) => {
+    const elements = document.querySelectorAll('deckgo-youtube');
+
+    if (elements) {
+      Array.from(elements).forEach((element) => {
+        element.style.minHeight = `${height}px`;
+        element.height = height;
+        element.width = width;
+      });
+    }
+  }
+
+  const onVideoResize = async () => {
+    if (!videoSize) {
       return;
     }
 
@@ -33,9 +69,7 @@ const Playlist = ({content}) => {
     }
 
     for (const element of Array.from(elements)) {
-      const width = Math.max(width, mainRef.current.offsetWidth);
-      const height = (width * 9) / 16;
-      await element.updateIFrame(width, height);
+      await element.updateIFrame(videoSize.width, videoSize.height);
     }
   }
 
@@ -44,7 +78,7 @@ const Playlist = ({content}) => {
   let videoObserver = undefined;
 
   useEffect(() => {
-    if (!mainRef || !mainRef) {
+    if (!containerRef || !containerRef.current || !videoSize) {
       return;
     }
 
@@ -55,7 +89,7 @@ const Playlist = ({content}) => {
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mainRef]);
+  }, [containerRef, videoSize]);
 
   const deferVideoIntersectionObserverLoad = () => {
     videoObserver = new IntersectionObserver(onVideoIntersection, {
@@ -101,8 +135,8 @@ const Playlist = ({content}) => {
   };
 
   return <Layout>
-    <main className="bg-black pt-16 text-white min-h-screen" ref={mainRef}>
-      <div className="max-w-screen-md m-auto p-5" dangerouslySetInnerHTML={{ __html: content }}></div>
+    <main className="bg-black pt-16 text-white">
+      <div ref={containerRef} className="max-w-screen-md m-auto p-5" dangerouslySetInnerHTML={{ __html: content }}></div>
     </main>
   </Layout>;
 };
