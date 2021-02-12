@@ -2,6 +2,7 @@ import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 
 import {Layout} from "../../components/layout/Layout";
 import {Video} from "../../components/video/Video";
+import {Author} from "../../components/author/Author";
 
 import {formatDate} from "../../utils/date.utils";
 
@@ -12,6 +13,8 @@ const Playlist = ({content, frontmatter}) => {
       {renderTitle()}
 
       <Video content={content}></Video>
+
+      <Author frontmatter={frontmatter}></Author>
     </main>
   </Layout>;
 

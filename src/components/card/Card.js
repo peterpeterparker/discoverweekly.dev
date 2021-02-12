@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 import styles from './Card.module.scss';
 
-import {formatDate} from "../../utils/date.utils";
+import {Profile} from "../profile/Profile";
 
 export const Card = ({playlist}) => {
   const {slug, frontmatter, summary} = playlist;
-  const {name, profile, twitter, date} = frontmatter;
   const {title, text} = summary;
 
   return (
@@ -22,20 +20,8 @@ export const Card = ({playlist}) => {
 
   function renderProfile() {
     return (
-      <div className="md:w-40 mx-8 my-4 md:m-8 flex flex md:flex-col md:justify-center items-center">
-        <div className={`rounded-full overflow-hidden ${styles.profile}`}>
-          <Image src={profile} alt={`${name} profile image`} layout="intrinsic" width={128} height={128} />
-        </div>
-        <div className="flex flex-col md:text-center md:text-sm ml-2 md:ml-0 md:mt-3 ">
-            <a
-                href="https://twitter.com/{twitter}"
-                rel="noopener norefferer"
-                aria-label={`${name} - @${twitter}`}
-                className={`text-gray-200 hover:text-purple-300 ${styles.twitter}`}>
-                {name}
-            </a>
-            <p className="text-xs text-gray-200 md:mt-1">{formatDate(date)}</p>
-        </div>
+      <div className="md:w-40 mx-8 my-4 md:m-8 flex flex md:flex-col md:justify-center items-center text-gray-200">
+        <Profile frontmatter={frontmatter} infoCss="ml-4 md:ml-0 md:text-sm"></Profile>
       </div>
     );
   }
@@ -53,9 +39,10 @@ export const Card = ({playlist}) => {
             </div>
 
             <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
-            <a href="#" className="mt-4 block text-sm underline">
+
+            <p className="mt-4 block text-sm underline">
                 More...
-            </a>
+            </p>
         </div>
       </Link>
     );

@@ -1,7 +1,7 @@
 ---
 date: "2021-02-22"
 name: "Sandro Scalco"
-description: "Hi, my name is Sandro and I'm working on a project to enable more digital democracy. Check out project [owlly](https://owlly.ch) if you interested in more civictech stuff."
+description: "Hi, my name is Sandro and I'm working on a project to enable more digital democracy."
 profile: "https://pbs.twimg.com/profile_images/1288877484025556993/GZlgSnfP_400x400.jpg"
 twitter: "saandr0o"
 github: "sansan88"
