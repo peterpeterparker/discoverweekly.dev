@@ -25,7 +25,7 @@
 
 .post {
   &:hover {
-    p {
+    h1, p {
       color: rgba(196, 181, 253, var(--tw-text-opacity));
     }
   }

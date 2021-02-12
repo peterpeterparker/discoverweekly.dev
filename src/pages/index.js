@@ -1,6 +1,4 @@
-import Link from 'next/link';
-
-import {getAllPlaylists} from '../lib/playlist';
+import {getAllPlaylistsWithSummary} from '../lib/playlist';
 
 import Header from '../components/header/Header';
 
@@ -17,7 +15,7 @@ export const Home = ({playlists}) => {
         <Hero></Hero>
       </Layout>
 
-      <main className="bg-black pt-20">
+      <main className="bg-black pt-10">
         {playlists.map((playlist) => {
           return <Card playlist={playlist} key={playlist.slug}></Card>;
         })}
@@ -29,7 +27,7 @@ export const Home = ({playlists}) => {
 export default Home;
 
 export async function getStaticProps() {
-  const playlists = getAllPlaylists();
+  const playlists = await getAllPlaylistsWithSummary();
 
   return {
     props: {playlists},
