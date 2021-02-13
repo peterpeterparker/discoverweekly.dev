@@ -28,7 +28,7 @@ export const Author = ({frontmatter}) => {
       <Profile frontmatter={frontmatter} infoCss="mt-4" imageCss="big"></Profile>
 
       {
-        description ? <p className="max-w-xs mt-8">{description}</p> : undefined
+        description ? <p className="max-w-xs mt-2">{description}</p> : undefined
       }
 
       {renderProject()}

@@ -7,7 +7,7 @@ import config from '../../config.json';
 
 import styles from './Navbar.module.scss';
 
-import {SharePlaylist} from '../links/SharePlaylist';
+import {SharePlaylist} from '../share/SharePlaylist';
 const Theme = dynamic(() => import('../theme/Theme'), {ssr: false});
 
 export const Navbar = () => {

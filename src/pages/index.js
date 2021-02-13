@@ -3,17 +3,23 @@ import dynamic from 'next/dynamic';
 import {getAllPlaylistsWithSummary} from '../lib/playlist';
 import {getSpheres} from '../lib/scene';
 
-import Header from '../components/header/Header';
+import config from "../config.json";
 
+import Header from '../components/header/Header';
 import {Layout} from '../components/layout/Layout';
 import {Hero} from '../components/hero/Hero';
 import {Card} from '../components/card/Card';
-import {SharePlaylist} from '../components/links/SharePlaylist';
 import {HeaderMeta} from '../components/header/HeaderMeta';
 import {Share} from '../components/share/Share';
+import {SecondaryButton} from "../components/button/SecondaryButton";
 const Background = dynamic(() => import('../components/background/Background'), {ssr: false});
 
 export const Home = ({playlists, spheres}) => {
+
+    const navigatePullRequest = () => {
+        window.location = `${config.github}#contributing`;
+    };
+
   return (
     <>
       <Header></Header>
@@ -30,9 +36,9 @@ export const Home = ({playlists, spheres}) => {
           })}
 
           <div className="w-full flex flex-col justify-center m-auto w-max py-16 items-center">
-            <p className="dark:text-white block mb-2">Contribute now, share your best music tips!</p>
+            <p className="dark:text-white block mb-2 mt-2">Contribute now, share your best music tips!</p>
 
-            <SharePlaylist label="Submit a pull request"></SharePlaylist>
+            <SecondaryButton action={navigatePullRequest}>Submit a pull request</SecondaryButton>
           </div>
         </main>
       </Layout>

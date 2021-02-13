@@ -1,8 +1,11 @@
 import React, {memo} from 'react';
 
+import styles from './Card.module.scss';
+
 import Link from 'next/link';
 
 import {Profile} from "../profile/Profile";
+import {formatDate} from "../../utils/date.utils";
 
 export const Card = memo(({playlist}) => {
   const {slug, frontmatter, summary} = playlist;
@@ -29,16 +32,18 @@ export const Card = memo(({playlist}) => {
   function renderPost() {
     return (
       <Link as={`/playlist/${slug}`} href="/playlist/[slug]">
-        <div className={`w-full rounded bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600 border text-gray-600 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-700 dark:hover:bg-opacity-20 md:text-left rounded-2xl p-8 cursor-pointer`}>
-            <div className="w-full mb-5 flex justify-between items-center">
-                <div className="font-bold capitalize text-2xl dark:text-gray-100" dangerouslySetInnerHTML={{ __html: title }}></div>
+        <div className={`${styles.card} w-full rounded bg-white dark:bg-gray-900 border-purple-600 border text-gray-600 dark:text-gray-200 hover:bg-purple-100 dark:hover:bg-purple-700 dark:hover:bg-opacity-20 md:text-left rounded-2xl p-8 cursor-pointer transition duration-300`}>
+            <div className="w-full flex justify-between items-center">
+                <div className="font-bold capitalize text-4xl dark:text-gray-50" dangerouslySetInnerHTML={{ __html: title }}></div>
 
-                <button className="bg-gray-50 dark:bg-gray-700 hover:bg-purple-700 hover:text-white hover:border-purple-700 dark:hover:bg-purple-700 dark:hover:text-white dark:hover:border-purple-700 border border-gray-200 dark:border-gray-600 text-black dark:text-gray-100 transition duration-500 rounded-full px-2 py-1 text-sm">
+                <button className={`${styles.share} bg-gray-50 dark:bg-gray-700 hover:bg-purple-700 hover:text-white hover:border-purple-300 dark:hover:bg-purple-700 dark:hover:text-white dark:hover:border-purple-700 border border-purple-600 dark:border-gray-600 text-black dark:text-gray-100 transition duration-300 rounded-full px-2 py-1 text-sm`}>
                     Share
                 </button>
             </div>
 
-            <div className="text-sm" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
+            <p className="text-xs mt-0.5">{formatDate(frontmatter.date)}</p>
+
+            <div className="text-sm mt-4" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
 
             <p className="mt-4 block text-sm underline">
                 More...

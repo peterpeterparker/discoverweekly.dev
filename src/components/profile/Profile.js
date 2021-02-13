@@ -14,7 +14,6 @@ export const Profile = ({frontmatter, infoCss, imageCss}) => {
       </div>
       <div className={`flex flex-col md:text-center md:mt-3 ${infoCss}`}>
         {renderName()}
-        <p className="text-xs md:mt-1">{formatDate(date)}</p>
       </div>
     </>
   );
@@ -25,7 +24,7 @@ export const Profile = ({frontmatter, infoCss, imageCss}) => {
         href="https://twitter.com/{twitter}"
         rel="noopener norefferer"
         aria-label={`${name} - @${twitter}`}
-        className={`hover:text-purple-600 dark:hover:text-purple-300 ${styles.twitter}`}>
+        className={`text-xl hover:text-purple-600 dark:hover:text-purple-300 ${styles.twitter}`}>
         {name}
       </a>
     ) : (

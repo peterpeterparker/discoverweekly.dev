@@ -1,0 +1,11 @@
+.card {
+  box-shadow: 2px 2px rgb(124 58 237);
+}
+
+.share {
+  box-shadow: 1px 1px rgb(124 58 237);
+
+  &:hover {
+    box-shadow: 1px 1px rgb(196, 181, 253);
+  }
+}

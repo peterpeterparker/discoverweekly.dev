@@ -3,7 +3,7 @@ import {Social} from '../social/Social';
 export const Footer = () => {
   return (
     <footer className="w-screen bg-gray-50 dark:bg-black pt-8 pb-10 px-10 dark:text-white text-sm flex flex-col items-center">
-      <hr className="w-24 mt-2 border-t-2 border-gray-200 dark:border-gray-600" />
+      <hr className="w-24 mt-2 border-t-2 border-gray-100 dark:border-gray-900" />
 
       <div className="max-w-screen-md m-auto flex flex-col-reverse md:grid md:grid-cols-2 mt-16">
         {renderAbout()}
@@ -18,7 +18,7 @@ export const Footer = () => {
       <div className="md:mr-4 flex flex-col justify-between">
         <div>
           <p className="text-xl mb-2">About</p>
-          <p className="font-light">
+          <p className="text-gray-600 dark:text-gray-100">
             Developed with passion by{' '}
             <a
               href="https://daviddalbusco.com"
@@ -38,7 +38,7 @@ export const Footer = () => {
       <div>
         <p className="text-xl mb-2">More projects</p>
 
-        <p className="font-light mb-4">
+        <p className="text-gray-600 dark:text-gray-100 mb-4">
           Give a try to{' '}
           <a
             href="https://deckdeckgo.com"
@@ -57,7 +57,7 @@ export const Footer = () => {
           />
         </p>
 
-        <p className="font-light mb-8">
+        <p className="text-gray-600 dark:text-gray-100 mb-8">
           Looking for a simple and free time tracking app ⏱️? Try{' '}
           <a
             href="http://tietracker.app.link"
