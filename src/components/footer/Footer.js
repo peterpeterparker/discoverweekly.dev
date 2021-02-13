@@ -29,8 +29,6 @@ export const Footer = () => {
             </a>
           </p>
         </div>
-
-        <Social margin="mb-6"></Social>
       </div>
     );
   }

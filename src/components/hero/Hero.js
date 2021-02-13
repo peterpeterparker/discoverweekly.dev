@@ -4,7 +4,7 @@ import config from '../../config.json';
 
 import styles from './Hero.module.scss';
 
-import {SharePlaylist} from "../button/SharePlaylist";
+import {SharePlaylist} from "../links/SharePlaylist";
 import {GetPlaylists} from "../button/GetPlaylists";
 const Background = dynamic(() => import('../background/Background'), {ssr: false});
 import {Social} from "../social/Social";
@@ -39,7 +39,7 @@ export const Hero = () => {
                     </div>
                 </div>
 
-                <Social margin="m-8" color={'text-white dark:text-white'}></Social>
+                <Social></Social>
             </div>
         </article>
     )

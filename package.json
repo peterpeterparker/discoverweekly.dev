@@ -9,6 +9,7 @@
     "add:playlist": "node ./scripts/add-playlist.js"
   },
   "dependencies": {
+    "@deckdeckgo/utils": "^1.8.0",
     "@deckdeckgo/youtube": "^2.0.1",
     "@react-hook/window-size": "^3.0.7",
     "next": "10.0.6",
@@ -17,7 +18,8 @@
     "react-three-fiber": "^5.3.18",
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
-    "three": "^0.125.2"
+    "three": "^0.125.2",
+    "web-social-share": "^7.0.0"
   },
   "devDependencies": {
     "@react-three/drei": "^3.5.1",

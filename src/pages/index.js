@@ -5,8 +5,9 @@ import Header from '../components/header/Header';
 import {Layout} from '../components/layout/Layout';
 import {Hero} from '../components/hero/Hero';
 import {Card} from '../components/card/Card';
-import {SharePlaylist} from '../components/button/SharePlaylist';
-import {HeaderMeta} from "../components/header/HeaderMeta";
+import {SharePlaylist} from '../components/links/SharePlaylist';
+import {HeaderMeta} from '../components/header/HeaderMeta';
+import {Share} from '../components/share/Share';
 
 export const Home = ({playlists}) => {
   return (
@@ -29,6 +30,8 @@ export const Home = ({playlists}) => {
           </div>
         </main>
       </Layout>
+
+      <Share></Share>
     </>
   );
 };

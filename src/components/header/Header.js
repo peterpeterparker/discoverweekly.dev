@@ -1,7 +1,5 @@
 import Head from 'next/head';
 
-import config from '../../config.json';
-
 const Header = () => {
   return (
     <Head>
