@@ -1,15 +1,17 @@
+import dynamic from "next/dynamic";
+
 import config from '../../config.json';
 
 import styles from './Hero.module.scss';
 
 import {PrimaryButton} from "../button/PrimaryButton";
 import {SecondaryButton} from "../button/SecondaryButton";
-import {Background} from "../background/Background";
+const Background = dynamic(() => import('../background/Background'), {ssr: false});
 import {Social} from "../social/Social";
 
 export const Hero = () => {
     return (
-        <article className={`w-full relative ${styles.height}`}>
+        <article className={`w-full relative ${styles.height} bg-black`}>
 
             <Background></Background>
 

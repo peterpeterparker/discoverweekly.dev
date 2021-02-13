@@ -5,7 +5,7 @@ import {OrbitControls} from '@react-three/drei';
 import styles from './Background.module.scss';
 
 const z = (x, y, factor) => {
-  return Math.sin(x * 0.4 + y * 0.02 + factor * 0.6);
+  return Math.sin(x * 0.4 + y * 0.03 + factor * 0.9);
 };
 
 const Sphere = (props) => {
@@ -27,10 +27,9 @@ const Sphere = (props) => {
 const Camera = (props) => {
   const {camera} = useThree();
 
-  useFrame((state) => {
-    const rate = -0.03;
-    camera.position.y = Math.max(camera.position.y + rate, -30);
-  });
+  useEffect(() => {
+    camera.position.y = -30;
+  }, [camera]);
 
   return <perspectiveCamera {...props} />;
 };
@@ -38,7 +37,7 @@ const Camera = (props) => {
 const Scene = memo(({meshs}) => {
   return (
     <Canvas shadowMap>
-      <Camera position={[0, 250, 50]} far={50} />
+      <Camera far={10} />
 
       <ambientLight intensity={1} />
       <spotLight position={[10, 10, 10]} angle={0.15} />
@@ -54,12 +53,16 @@ const Scene = memo(({meshs}) => {
   );
 });
 
-export const Background = () => {
+const Background = memo(() => {
   const [meshs, setMeshs] = useState();
 
   const elements = Array.from(Array(60).keys());
 
   useEffect(() => {
+    if (meshs) {
+      return;
+    }
+
     const spheres = [];
 
     elements.forEach((x) =>
@@ -74,4 +77,6 @@ export const Background = () => {
   }, []);
 
   return <div className={`${styles.container} bg-black`}>{meshs && meshs.length > 0 ? <Scene meshs={meshs}></Scene> : undefined}</div>;
-};
+});
+
+export default Background;
