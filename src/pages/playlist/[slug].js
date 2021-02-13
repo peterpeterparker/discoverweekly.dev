@@ -6,24 +6,31 @@ import {Author} from "../../components/author/Author";
 import {SecondaryButton} from "../../components/button/SecondaryButton";
 
 import {formatDate} from "../../utils/date.utils";
+import Header from "../../components/header/Header";
+import {HeaderMetaPlaylist} from "../../components/header/HeaderMetaPlaylist";
 
-const PlaylistPage = ({content, frontmatter}) => {
+const PlaylistPage = ({content, frontmatter, slug}) => {
 
-  return <Layout>
-    <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
-      {renderTitle()}
+  return <>
+    <Header></Header>
+    <HeaderMetaPlaylist frontmatter={frontmatter} slug={slug}></HeaderMetaPlaylist>
 
-      <Playlist content={content}></Playlist>
+    <Layout>
+      <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
+        {renderTitle()}
 
-      <Author frontmatter={frontmatter}></Author>
+        <Playlist content={content}></Playlist>
 
-      <div className="max-w-screen-md m-auto p-5 mt-8 pb-10 flex justify-center">
-        <SecondaryButton>
-          Get more playlists
-        </SecondaryButton>
-      </div>
-    </main>
-  </Layout>;
+        <Author frontmatter={frontmatter}></Author>
+
+        <div className="max-w-screen-md m-auto p-5 mt-8 pb-10 flex justify-center">
+          <SecondaryButton>
+            Get more playlists
+          </SecondaryButton>
+        </div>
+      </main>
+    </Layout>
+    </>;
 
   function renderTitle() {
     const {name, tags, date} = frontmatter;

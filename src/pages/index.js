@@ -6,11 +6,13 @@ import {Layout} from '../components/layout/Layout';
 import {Hero} from '../components/hero/Hero';
 import {Card} from '../components/card/Card';
 import {PrimaryButton} from '../components/button/PrimaryButton';
+import {HeaderMeta} from "../components/header/HeaderMeta";
 
 export const Home = ({playlists}) => {
   return (
     <>
       <Header></Header>
+      <HeaderMeta></HeaderMeta>
 
       <Layout>
         <Hero></Hero>
