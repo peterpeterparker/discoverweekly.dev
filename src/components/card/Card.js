@@ -12,7 +12,7 @@ export const Card = memo(({playlist}) => {
   const {title, text} = summary;
 
   return (
-    <article className="flex items-center p-5">
+    <article className="flex items-center px-5 pt-5 pb-10">
       <div className="w-full md:max-w-4xl md:px-8 md:py-4 mx-auto flex flex-col md:flex-row">
         {renderProfile()}
 
