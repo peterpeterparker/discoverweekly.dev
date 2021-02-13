@@ -17,8 +17,8 @@ const Sphere = (props) => {
   });
 
   return (
-    <mesh {...props} ref={mesh} castShadow={true} scale={[0.1, 0.1, 0.1]}>
-      <sphereGeometry attach="geometry" args={[1, 16, 16]} />
+    <mesh {...props} ref={mesh}>
+      <sphereGeometry attach="geometry" args={[0.1, 16, 16]} />
       <meshStandardMaterial roughness={0.1} metalness={0.1} attach="material" color="#7C3AED" />
     </mesh>
   );
