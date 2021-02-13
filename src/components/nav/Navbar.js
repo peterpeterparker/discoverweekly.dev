@@ -7,7 +7,7 @@ import config from '../../config.json';
 
 import styles from './Navbar.module.scss';
 
-import {PrimaryButton} from '../button/PrimaryButton';
+import {SharePlaylist} from '../button/SharePlaylist';
 const Theme = dynamic(() => import('../theme/Theme'), {ssr: false});
 
 export const Navbar = () => {
@@ -54,7 +54,7 @@ export const Navbar = () => {
           <Theme></Theme>
 
           <div className="hidden sm:block">
-            <PrimaryButton>Share your playlist</PrimaryButton>
+            <SharePlaylist label="Share your playlist"></SharePlaylist>
           </div>
         </div>
       </div>
