@@ -13,7 +13,7 @@ project: "https://owlly.ch"
 
 Relaxing Playlist, love to listen in the morning with a cup of coffee to kickstart the day.
 
-{% spotify https://open.spotify.com/playlist/37i9dQZF1DX9RwfGbeGQwP?si=ID68cLG-SRWp1MVR_PeUNQ %}
+{% spotify playlist 37i9dQZF1DX9RwfGbeGQwP %}
 
 *****
 
@@ -21,7 +21,7 @@ Relaxing Playlist, love to listen in the morning with a cup of coffee to kicksta
 
 Motivation Boooooost!
 
-{% spotify https://open.spotify.com/artist/65EXuYHVoehCKqp0kOS6px?si=wfPJvLCrSLe9FIueBVZVdQ %}
+{% spotify artist 65EXuYHVoehCKqp0kOS6px %}
 
 *****
 
@@ -29,4 +29,4 @@ Motivation Boooooost!
 
 Deep Focus
 
-{% spotify https://open.spotify.com/track/5DAjrJqXqYtgr67pVhmUeR?si=tYfNgVd3SdunuSs0RBnReQ %}
+{% spotify track 5DAjrJqXqYtgr67pVhmUeR %}

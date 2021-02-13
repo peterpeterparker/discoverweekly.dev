@@ -10,6 +10,7 @@ import { JSDOM } from 'jsdom';
 const postsDirectory = join(process.cwd(), 'content', 'playlists');
 
 const youtubeMatch = /{%\syoutube\s(.*)\s%}/g;
+const spotifyMatch = /{%\sspotify\s(playlist|track|artist)\s(.*)\s%}/g;
 
 const getPlaylistBySlug = (slug) => {
   const realSlug = slug.replace(/\.md$/, '');
@@ -95,15 +96,14 @@ const format = (content) => {
 
       const youtube = youtubeMatch.exec(element.textContent);
       if (youtube) {
-        const video = window.document.createElement('deckgo-youtube');
-        video.setAttribute('src', `https://www.youtube.com/watch?v=${youtube?.[1]}`);
-
-        const div = window.document.createElement('div');
-        div.className = 'video';
-
-        div.appendChild(video);
-
+        const div = formatYoutube(window, youtube);
         element.parentNode.replaceChild(div, element);
+      }
+
+      const spotify = spotifyMatch.exec(element.textContent);
+      if (spotify) {
+        const iframe = formatSpotify(window, spotify);
+        element.parentNode.replaceChild(iframe, element);
       }
     }
 
@@ -112,4 +112,31 @@ const format = (content) => {
   });
 
   return window.document.documentElement.outerHTML;
+}
+
+const formatYoutube = (window, youtube) => {
+  const video = window.document.createElement('deckgo-youtube');
+  video.setAttribute('src', `https://www.youtube.com/watch?v=${youtube?.[1]}`);
+
+  const div = window.document.createElement('div');
+  div.className = 'youtube';
+
+  div.appendChild(video);
+
+  return div;
+}
+
+const formatSpotify = (window, spotify) => {
+  const iframe = window.document.createElement('iframe');
+  iframe.setAttribute('data-src', `https://open.spotify.com/embed/${spotify?.[1]}/${spotify?.[2]}`);
+  iframe.setAttribute('frameborder', '0');
+  iframe.setAttribute('allowtransparency', 'true');
+  iframe.setAttribute('allow', 'encrypted-media');
+
+  const div = window.document.createElement('div');
+  div.className = 'spotify';
+
+  div.appendChild(iframe);
+
+  return div;
 }

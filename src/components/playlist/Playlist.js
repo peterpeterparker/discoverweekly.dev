@@ -5,7 +5,7 @@ import {useWindowSize} from '@react-hook/window-size';
 import {defineCustomElements as deckDeckGoYoutubeElement} from '@deckdeckgo/youtube/dist/loader';
 deckDeckGoYoutubeElement();
 
-export const Video = ({content}) => {
+export const Playlist = ({content}) => {
   /* Video size */
 
   const [windowWidth] = useWindowSize();
@@ -41,18 +41,20 @@ export const Video = ({content}) => {
   };
 
   const applySize = (width, height) => {
-    const elements = document.querySelectorAll('div.video');
+    const elements = document.querySelectorAll('div.youtube, div.spotify');
 
-    if (elements) {
-      Array.from(elements).forEach((element) => {
-        element.style.minHeight = `${height}px`;
-        element.style.height = `${height}px`;
-        element.style.width = `${width}px`;
-
-        element.firstChild.height = height;
-        element.firstChild.width = width;
-      });
+    if (!elements) {
+      return;
     }
+
+    Array.from(elements).forEach((element) => {
+      element.style.minHeight = `${height}px`;
+      element.style.height = `${height}px`;
+      element.style.width = `${width}px`;
+
+      element.firstChild.height = height;
+      element.firstChild.width = width;
+    });
   };
 
   const onVideoResize = async () => {
@@ -71,7 +73,7 @@ export const Video = ({content}) => {
     }
   };
 
-  /* Video lazy loading */
+  /* Lazy loading */
 
   let videoObserver = undefined;
 
@@ -81,21 +83,21 @@ export const Video = ({content}) => {
     }
 
     if (window && 'IntersectionObserver' in window) {
-      deferVideoIntersectionObserverLoad();
+      deferIntersectionObserverLoad();
     } else {
-      unfortunatelyLoadVideoNow();
+      unfortunatelyLoadNow();
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [containerRef, videoSize]);
 
-  const deferVideoIntersectionObserverLoad = () => {
-    videoObserver = new IntersectionObserver(onVideoIntersection, {
+  const deferIntersectionObserverLoad = () => {
+    videoObserver = new IntersectionObserver(onIntersection, {
       rootMargin: '100px 0px',
       threshold: 0.25,
     });
 
-    const elements = document.querySelectorAll('deckgo-youtube');
+    const elements = document.querySelectorAll('deckgo-youtube, div.spotify iframe');
 
     if (elements) {
       Array.from(elements).forEach((element) => {
@@ -104,32 +106,48 @@ export const Video = ({content}) => {
     }
   };
 
-  const unfortunatelyLoadVideoNow = async () => {
-    const elements = document.querySelectorAll('deckgo-youtube');
+  const unfortunatelyLoadNow = async () => {
+    const elements = document.querySelectorAll('deckgo-youtube, div.spotify iframe');
 
     if (elements && elements.length > 0) {
-      const promises = Array.from(elements).map((element) => element.lazyLoadContent());
+      const promises = Array.from(elements).map((element) => load(element));
       await Promise.all(promises);
     }
   };
 
-  const onVideoIntersection = async (entries) => {
+  const onIntersection = async (entries) => {
     if (!entries || entries.length <= 0) {
       return;
     }
 
-    await handleVideoIntersection(entries);
+    await handleIntersection(entries);
   };
 
-  const handleVideoIntersection = async (entries) => {
+  const handleIntersection = async (entries) => {
     for (const entry of entries) {
       if (entry.isIntersecting) {
         if (videoObserver && entry.target) {
-          await entry.target.lazyLoadContent();
+          await load(entry.target);
           videoObserver.unobserve(entry.target);
         }
       }
     }
+  };
+
+  const load = async (element) => {
+    if (element.nodeName.toLowerCase() === 'deckgo-youtube') {
+      return loadYoutube(element);
+    }
+
+    return loadSpotify(element);
+  };
+
+  const loadSpotify = async (element) => {
+    element.src = element.getAttribute('data-src');
+  };
+
+  const loadYoutube = async (element) => {
+    return element.lazyLoadContent();
   };
 
   return <section ref={containerRef} className="max-w-screen-md m-auto p-5" dangerouslySetInnerHTML={{__html: content}}></section>;

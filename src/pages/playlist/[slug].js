@@ -1,19 +1,19 @@
 import {getAllPlaylists, getPlaylist} from '../../lib/playlist';
 
 import {Layout} from "../../components/layout/Layout";
-import {Video} from "../../components/video/Video";
+import {Playlist} from "../../components/playlist/Playlist";
 import {Author} from "../../components/author/Author";
 import {SecondaryButton} from "../../components/button/SecondaryButton";
 
 import {formatDate} from "../../utils/date.utils";
 
-const Playlist = ({content, frontmatter}) => {
+const PlaylistPage = ({content, frontmatter}) => {
 
   return <Layout>
     <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
       {renderTitle()}
 
-      <Video content={content}></Video>
+      <Playlist content={content}></Playlist>
 
       <Author frontmatter={frontmatter}></Author>
 
@@ -38,7 +38,7 @@ const Playlist = ({content, frontmatter}) => {
   }
 };
 
-export default Playlist;
+export default PlaylistPage;
 
 export async function getStaticProps({params}) {
   const playlist = await getPlaylist(params);

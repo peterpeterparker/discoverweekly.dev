@@ -53,5 +53,6 @@ Why do you love that band or song? Or any particular fun fact about it? Or a sho
 The music material can either be a `Youtube` video or a `Spotify` link. Please provide these as following:
 
 - Youtube: `{% youtube dQw4w9WgXcQ %}`
+- Spotify (artist): `{% spotify artist 65EXuYHVoehCKqp0kOS6px %}`
 - Spotify (track): `{% spotify track 2u8NmvhYX6wiviyxJTOhEi %}`
 - Spotify (playlist): `{% spotify playlist 37i9dQZF1DX9RwfGbeGQwP %}`
