@@ -44,7 +44,7 @@ Their black metal in major cord is epic! Perfect to write a zillion lines of cod
 
 The title of the music tips can either be a band ("AC/DC") or, a song ("AC/DC - Let the be rock").
 
-### Description ✅
+### Description
 
 Why do you love that band or song? Or any particular fun fact about it? Or a short story?
 
