@@ -5,11 +5,23 @@ import config from '../../config.json';
 import styles from './Hero.module.scss';
 
 import {SharePlaylist} from "../button/SharePlaylist";
-import {SecondaryButton} from "../button/SecondaryButton";
+import {GetPlaylists} from "../button/GetPlaylists";
 const Background = dynamic(() => import('../background/Background'), {ssr: false});
 import {Social} from "../social/Social";
 
 export const Hero = () => {
+    const scrollTo = () => {
+        const main = document.querySelector('#main');
+
+        if (!main) {
+            return;
+        }
+
+        main.scrollIntoView({
+            behavior: 'smooth',
+        });
+    };
+
     return (
         <article className={`w-full relative ${styles.height} bg-black`}>
 
@@ -21,9 +33,9 @@ export const Hero = () => {
                     <p className="sm:text-2xl lg:text-3xl mb-8 text-white">{config.description}</p>
                     <div className="flex flex-col items-center sm:flex-row sm:justify-center">
                         <SharePlaylist label="Share your playlist"></SharePlaylist>
-                        <SecondaryButton color="bg-black bg-opacity-80 text-white hover:text-black hover:bg-purple-400">
+                        <GetPlaylists action={scrollTo} color="bg-black bg-opacity-80 text-white hover:text-black hover:bg-purple-400">
                             Get playlists
-                        </SecondaryButton>
+                        </GetPlaylists>
                     </div>
                 </div>
 
