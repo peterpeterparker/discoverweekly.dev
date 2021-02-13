@@ -1,15 +1,12 @@
-import dynamic from "next/dynamic";
-
 import config from '../../config.json';
 
 import styles from './Hero.module.scss';
 
 import {SharePlaylist} from "../links/SharePlaylist";
 import {GetPlaylists} from "../button/GetPlaylists";
-const Background = dynamic(() => import('../background/Background'), {ssr: false});
 import {Social} from "../social/Social";
 
-export const Hero = () => {
+export const Hero = ({children}) => {
     const scrollTo = () => {
         const main = document.querySelector('#main');
 
@@ -25,7 +22,7 @@ export const Hero = () => {
     return (
         <article className={`w-full relative ${styles.height} bg-black`}>
 
-            <Background></Background>
+            {children}
 
             <div className={`flex justify-center items-center flex-col mt-8 ${styles.position}`}>
                 <div className="mx-4 text-center">

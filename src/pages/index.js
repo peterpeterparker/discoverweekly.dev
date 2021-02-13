@@ -1,4 +1,7 @@
+import dynamic from 'next/dynamic';
+
 import {getAllPlaylistsWithSummary} from '../lib/playlist';
+import {getSpheres} from '../lib/scene';
 
 import Header from '../components/header/Header';
 
@@ -8,15 +11,18 @@ import {Card} from '../components/card/Card';
 import {SharePlaylist} from '../components/links/SharePlaylist';
 import {HeaderMeta} from '../components/header/HeaderMeta';
 import {Share} from '../components/share/Share';
+const Background = dynamic(() => import('../components/background/Background'), {ssr: false});
 
-export const Home = ({playlists}) => {
+export const Home = ({playlists, spheres}) => {
   return (
     <>
       <Header></Header>
       <HeaderMeta></HeaderMeta>
 
       <Layout>
-        <Hero></Hero>
+        <Hero>
+            <Background spheres={spheres}></Background>
+        </Hero>
 
         <main className="bg-gray-50 dark:bg-black pt-10" id="main">
           {playlists.map((playlist) => {
@@ -40,8 +46,12 @@ export default Home;
 
 export async function getStaticProps() {
   const playlists = await getAllPlaylistsWithSummary();
+  const spheres = getSpheres();
 
   return {
-    props: {playlists},
+    props: {
+      playlists,
+      spheres,
+    },
   };
 }
