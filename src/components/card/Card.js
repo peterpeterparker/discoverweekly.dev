@@ -2,8 +2,6 @@ import React, {memo} from 'react';
 
 import Link from 'next/link';
 
-import styles from './Card.module.scss';
-
 import {Profile} from "../profile/Profile";
 
 export const Card = memo(({playlist}) => {
@@ -31,11 +29,11 @@ export const Card = memo(({playlist}) => {
   function renderPost() {
     return (
       <Link as={`/playlist/${slug}`} href="/playlist/[slug]">
-        <div className={`w-full rounded bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600 border text-gray-600 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-300 md:text-left rounded-2xl p-8 cursor-pointer ${styles.post}`}>
+        <div className={`w-full rounded bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-600 border text-gray-600 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-700 dark:hover:bg-opacity-20 md:text-left rounded-2xl p-8 cursor-pointer`}>
             <div className="w-full mb-5 flex justify-between items-center">
                 <div className="font-bold capitalize text-2xl dark:text-gray-100" dangerouslySetInnerHTML={{ __html: title }}></div>
 
-                <button className="bg-gray-50 dark:bg-gray-700 hover:bg-purple-100 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-600 hover:border-gray-300 text-black dark:text-gray-100 transition duration-500 rounded-full px-2 py-1 text-sm">
+                <button className="bg-gray-50 dark:bg-gray-700 hover:bg-purple-700 hover:text-white hover:border-purple-700 dark:hover:bg-purple-700 dark:hover:text-white dark:hover:border-purple-700 border border-gray-200 dark:border-gray-600 text-black dark:text-gray-100 transition duration-500 rounded-full px-2 py-1 text-sm">
                     Share
                 </button>
             </div>
