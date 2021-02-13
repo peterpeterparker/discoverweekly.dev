@@ -90,7 +90,7 @@ const format = (content) => {
     if (element.nodeName === 'HR') {
         element.className =  'w-24 mt-8 py-4 border-t-2 m-auto border-gray-200 dark:border-gray-600';
     } else if (element.nodeName === 'H1') {
-        element.className = 'font-bold text-2xl lg:text-4xl mb-4 mt-10'
+        element.className = 'font-bold text-4xl mb-4 mt-10'
     } else if (element.nodeName === 'P') {
       element.className =  'break-words';
 
