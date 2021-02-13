@@ -40,7 +40,7 @@ const Scene = memo(({meshs}) => {
       <Camera far={10} />
 
       <ambientLight intensity={1} />
-      <spotLight position={[10, 10, 10]} angle={0.15} />
+      <spotLight position={[10, -100, 10]} angle={0.15} />
 
       <group position={[0, 0, 0]}>
         {meshs.map((sphere, i) => {
