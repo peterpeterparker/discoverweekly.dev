@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
 import config from '../../config.json';
@@ -7,7 +8,7 @@ import config from '../../config.json';
 import styles from './Navbar.module.scss';
 
 import {PrimaryButton} from '../button/PrimaryButton';
-import {Theme} from "../theme/Theme";
+const Theme = dynamic(() => import('../theme/Theme'), {ssr: false});
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
