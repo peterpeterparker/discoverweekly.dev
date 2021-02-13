@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+#  DiscoverWeekly.dev
 
-## Getting Started
+The playlists made by devs, every Wednesday.
 
-First, run the development server:
+## Table of contents
 
-```bash
-npm run dev
-# or
-yarn dev
+- [Contributing](#contributing)
+- [Add a new playlist](#add-a-new-playlist)
+- [Run the project locally](#run-the-project-locally)
+- [License](#license)
+
+## Contributing
+
+Make sure you have a recent version of [Node.js installed](https://nodejs.org/en/) (LTS recommended).
+
+Fork and clone this repository. Head over to your terminal and run the following command:
+
+```
+git clone git@github.com:[YOUR_USERNAME]/discoverweekly.git
+cd discoverweekly
+npm ci
+npm run add:playlist
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Add a new playlist
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+`npm run add:playlist` will ask for your name and create a file in `./content/playlists/`.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Continue by editing this generated `Markdown` file.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Have a look at the [CONTRIBUTING.md](./CONTRIBUTING.md) for further information about the edition of your playlist details.
 
-## Learn More
+Commit the changes and [open a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-To learn more about Next.js, take a look at the following resources:
+## Run the project locally
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is a [Next.js](https://nextjs.org/) project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+npm run dev
+```
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+MIT © [David Dal Busco](mailto:david.dalbusco@outlook.com)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

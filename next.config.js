@@ -25,7 +25,7 @@ const withTM = require('next-transpile-modules')(
 
 module.exports = withTM({
     images: {
-        domains: ['pbs.twimg.com'],
+        domains: ['pbs.twimg.com', 'avatars.githubusercontent.com'],
     },
     i18n: {
         locales: ['en'],
