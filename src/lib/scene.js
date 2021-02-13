@@ -8,7 +8,7 @@ export const getSpheres = () => {
   elements.forEach((x) =>
     elements.forEach((y) => {
       const posX = x - elements.length / 2;
-      const posY = y - elements.length / 2;
+      const posY = y - elements.length;
       spheres.push({x: posX, y: posY, z: z(posX, posY, 0)});
     })
   );
