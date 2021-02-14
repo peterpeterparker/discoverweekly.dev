@@ -32,7 +32,7 @@ export const Home = ({playlists, spheres}) => {
         <main className="bg-gray-50 dark:bg-black pt-10" id="main">
           <Playlists playlists={playlists}></Playlists>
 
-          <div className="w-full flex flex-col justify-center m-auto w-max py-16 items-center">
+          <div className="w-full flex flex-col justify-center m-auto w-max pt-20 pb-16 items-center">
             <p className="dark:text-white block mb-2 mt-2">Contribute now, share your best music tips!</p>
 
             <SecondaryButton action={navigatePullRequest}>Submit a pull request</SecondaryButton>
