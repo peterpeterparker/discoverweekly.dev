@@ -30,7 +30,7 @@ const PlaylistPage = ({content, frontmatter, slug}) => {
 
           <Author frontmatter={frontmatter}></Author>
 
-          <div className="max-w-screen-md m-auto p-5 mt-16 pb-10 flex justify-center">
+          <div className="max-w-screen-md m-auto p-5 mt-16 pb-14 flex justify-center">
             <SecondaryButton action={navigateRoot}>Get more playlists</SecondaryButton>
           </div>
         </main>
