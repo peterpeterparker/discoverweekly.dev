@@ -1,15 +1,19 @@
-import styles from './SharePlaylist.module.scss';
+import {openSharePlaylist} from '../../utils/share.utils';
 
-import config from '../../config.json';
+export const SharePlaylist = ({slug, name, twitter}) => {
+  const share = async ($event) => {
+    $event.stopPropagation();
 
-export const SharePlaylist = ({label}) => {
+    await openSharePlaylist(slug, name, twitter);
+  };
+
   return (
-    <a
-      href={`${config.github}#contributing`}
-      rel="noopener norefferer"
-      aria-label={`${label}`}
-      className={`${styles.button} border-white w-max border bg-purple-600 text-white capitalize rounded-full px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-purple-700 hover:border-purple-300 focus:outline-none focus:shadow-outline`}>
-      {label}
-    </a>
+    <button
+      role="button"
+      onClick={async ($event) => await share($event)}
+      aria-label={`Share ${name} playlist`}
+      className="bg-gray-50 dark:bg-gray-700 hover:bg-purple-700 hover:text-white hover:border-purple-300 dark:hover:bg-purple-700 dark:hover:text-white dark:hover:border-purple-700 border border-purple-600 dark:border-gray-600 text-black dark:text-gray-100 transition duration-300 rounded-full px-2 py-1 text-sm">
+      Share
+    </button>
   );
 };

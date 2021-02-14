@@ -6,9 +6,11 @@ import Link from 'next/link';
 
 import {Profile} from "../profile/Profile";
 import {formatDate} from "../../utils/date.utils";
+import {SharePlaylist} from "../share/SharePlaylist";
 
 export const Card = memo(({playlist}) => {
   const {slug, frontmatter, summary} = playlist;
+  const {date, name, twitter} = frontmatter;
   const {title, text} = summary;
 
   return (
@@ -36,12 +38,10 @@ export const Card = memo(({playlist}) => {
             <div className="w-full flex justify-between items-center">
                 <div className="font-bold capitalize text-4xl dark:text-gray-50" dangerouslySetInnerHTML={{ __html: title }}></div>
 
-                <button className={`${styles.share} bg-gray-50 dark:bg-gray-700 hover:bg-purple-700 hover:text-white hover:border-purple-300 dark:hover:bg-purple-700 dark:hover:text-white dark:hover:border-purple-700 border border-purple-600 dark:border-gray-600 text-black dark:text-gray-100 transition duration-300 rounded-full px-2 py-1 text-sm`}>
-                    Share
-                </button>
+                <SharePlaylist slug={slug} name={name} twitter={twitter}></SharePlaylist>
             </div>
 
-            <p className="text-xs mt-0.5">{formatDate(frontmatter.date)}</p>
+            <p className="text-xs mt-0.5">{formatDate(date)}</p>
 
             <div className="text-sm mt-4" dangerouslySetInnerHTML={{ __html: text }}></div>{' '}
 

@@ -10,7 +10,7 @@ import {Layout} from '../components/layout/Layout';
 import {Hero} from '../components/hero/Hero';
 import {Card} from '../components/card/Card';
 import {HeaderMeta} from '../components/header/HeaderMeta';
-import {Share} from '../components/share/Share';
+import {ShareDesktop} from '../components/share/ShareDesktop';
 import {SecondaryButton} from "../components/button/SecondaryButton";
 const Background = dynamic(() => import('../components/background/Background'), {ssr: false});
 
@@ -43,7 +43,7 @@ export const Home = ({playlists, spheres}) => {
         </main>
       </Layout>
 
-      <Share></Share>
+      <ShareDesktop></ShareDesktop>
     </>
   );
 };
