@@ -64,7 +64,7 @@ export const Author = ({frontmatter}) => {
       return undefined;
     }
 
-    return <Twitter url={twitter} label={`Twitter @${twitter}`} small={true}></Twitter>;
+    return <Twitter url={`https://twitter.com/${twitter}`} label={`Twitter @${twitter}`} small={true}></Twitter>;
   }
 
   function renderGitHub() {
@@ -72,7 +72,7 @@ export const Author = ({frontmatter}) => {
       return undefined;
     }
 
-    return <GitHub url={github} label={`GitHub ${github}`} small={true}></GitHub>;
+    return <GitHub url={`https://github.com/${github}`} label={`GitHub ${github}`} small={true}></GitHub>;
   }
 
   function renderWebsite() {
