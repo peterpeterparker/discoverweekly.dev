@@ -49,7 +49,7 @@ export const Author = ({frontmatter}) => {
     return (
       <p className="mt-4">
         Check out my awesome project{' '}
-        <a href={project} rel="noopener norefferer" aria-label={`${name} project`} className="text-white hover:text-purple-600 underline">
+        <a href={project} rel="noopener norefferer" aria-label={`${name} project`} className="dark:text-white hover:text-purple-600 dark:hover:text-purple-600 underline">
           {projectName}
         </a>{'!'}
       </p>
