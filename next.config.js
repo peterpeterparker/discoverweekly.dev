@@ -20,12 +20,28 @@ const withTM = require('next-transpile-modules')(
   {debug: debug, __unstable_matcher: match} // symlink-caused loops which cause memory to get bloated exponentially.
 );
 
-module.exports = withTM({
+const withPlugins = require('next-compose-plugins');
+const withPWA = require('next-pwa')
+
+module.exports = {
+  future: { webpack5: true }
+}
+
+const nextConfig = {
   images: {
     domains: ['pbs.twimg.com', 'avatars.githubusercontent.com'],
+  },
+  pwa: {
+    disable: process.env.NODE_ENV === 'development',
+    dest: 'public',
   },
   i18n: {
     locales: ['en'],
     defaultLocale: 'en',
   },
-});
+  future: { webpack5: true }
+};
+
+module.exports = withPlugins(
+  [withTM(nextConfig), withPWA(nextConfig)]
+);
