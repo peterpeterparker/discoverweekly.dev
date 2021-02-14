@@ -2,6 +2,8 @@ import fs from 'fs';
 import {join} from 'path';
 
 const format = require('date-fns/format');
+const setDay = require('date-fns/setDay');
+const isAfter = require('date-fns/isAfter');
 
 import matter from 'gray-matter';
 
@@ -20,7 +22,10 @@ const getPlaylistBySlug = (slug) => {
 
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
-  return slugs.map((slug) => getPlaylistBySlug(slug));
+
+  const wednesday = setDay(new Date(), 3, { weekStartsOn: 1 });
+
+  return slugs.map((slug) => getPlaylistBySlug(slug)).filter(playlist => !isAfter(new Date(playlist.frontmatter.date), wednesday));
 };
 
 export const getAllPlaylistsWithSummary = async () => {
