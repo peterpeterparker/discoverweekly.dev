@@ -79,7 +79,7 @@ const sharePlaylistDesktop = async (url, name, twitter) => {
     config: [
       {
         twitter: {
-          socialShareText: `Checkout @${twitter} playlist on ${config.title} 🤟`,
+          socialShareText: `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.title} 🤟`,
           socialShareUrl: url,
           socialSharePopupWidth: 300,
           socialSharePopupHeight: 400,

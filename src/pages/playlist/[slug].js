@@ -24,7 +24,7 @@ const PlaylistPage = ({content, frontmatter, slug}) => {
 
       <Layout>
         <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
-          <PlaylistTitle frontmatter={frontmatter}></PlaylistTitle>
+          <PlaylistTitle slug={slug} frontmatter={frontmatter}></PlaylistTitle>
 
           <Playlist content={content}></Playlist>
 
