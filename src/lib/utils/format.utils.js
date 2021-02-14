@@ -41,6 +41,7 @@ export const format = (content) => {
 const formatYoutube = (window, youtube) => {
   const video = window.document.createElement('deckgo-youtube');
   video.setAttribute('src', `https://www.youtube.com/watch?v=${youtube?.[1]}`);
+  video.setAttribute('allow-fullscreen', 'false');
 
   const div = window.document.createElement('div');
   div.className = 'youtube';
