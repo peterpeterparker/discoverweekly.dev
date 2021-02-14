@@ -28,7 +28,7 @@ Fork and clone this repository. Head over to your terminal and run the following
 
 ```
 git clone git@github.com:[YOUR_USERNAME]/discoverweekly.dev.git
-cd discoverweekly
+cd discoverweekly.dev
 npm ci
 npm run add:playlist
 ```
