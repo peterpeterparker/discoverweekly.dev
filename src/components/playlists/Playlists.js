@@ -7,7 +7,7 @@ export const Playlists = ({playlists}) => {
         <div key={key}>
           {renderPlaylistNumber(i)}
 
-            <hr className="w-24 pb-6 border-t-2 border-purple-300 m-auto" />
+          <hr className="w-24 pb-6 border-t-2 border-purple-300 m-auto" />
 
           {playlists[key].map((playlist) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;

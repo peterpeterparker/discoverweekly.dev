@@ -1,4 +1,4 @@
-import {z} from "../utils/scene.utils";
+import {z} from '../utils/scene.utils';
 
 export const getSpheres = () => {
   const elements = Array.from(Array(30).keys());

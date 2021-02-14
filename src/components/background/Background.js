@@ -54,9 +54,11 @@ const Scene = memo(({spheres}) => {
 });
 
 const Background = memo((props) => {
-  return <div className={`${styles.container} bg-black`}>
+  return (
+    <div className={`${styles.container} bg-black`}>
       <Scene {...props}></Scene>
-  </div>;
+    </div>
+  );
 });
 
 export default Background;

@@ -48,7 +48,6 @@ export const Navbar = () => {
             <a href="/" className="flex-shrink-0 flex items-center sm:pl-2">
               <Image src="/images/logo.svg" alt={`${config.title} logo`} width={48} height={48} />
             </a>
-
           </div>
 
           <Theme></Theme>

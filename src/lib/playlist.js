@@ -23,9 +23,9 @@ const getPlaylistBySlug = (slug) => {
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
 
-  const wednesday = setDay(new Date(), 3, { weekStartsOn: 1 });
+  const wednesday = setDay(new Date(), 3, {weekStartsOn: 1});
 
-  return slugs.map((slug) => getPlaylistBySlug(slug)).filter(playlist => !isAfter(new Date(playlist.frontmatter.date), wednesday));
+  return slugs.map((slug) => getPlaylistBySlug(slug)).filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), wednesday));
 };
 
 export const getAllPlaylistsWithSummary = async () => {

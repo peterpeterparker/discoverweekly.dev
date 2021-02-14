@@ -1,4 +1,4 @@
-#  DiscoverWeekly.dev
+# DiscoverWeekly.dev
 
 The playlists made by devs, every Wednesday.
 
@@ -43,4 +43,3 @@ npm run dev
 ## License
 
 MIT © [David Dal Busco](mailto:david.dalbusco@outlook.com)
-

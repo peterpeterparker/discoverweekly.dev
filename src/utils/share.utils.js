@@ -2,7 +2,7 @@ import {isMobile as detectMobile} from '@deckdeckgo/utils';
 
 import config from '../config.json';
 
-import {playlistUrl} from "./playlist.utils";
+import {playlistUrl} from './playlist.utils';
 
 export const openShareDiscoverWeekly = async () => {
   if (isMobile()) {

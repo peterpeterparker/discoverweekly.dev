@@ -8,7 +8,7 @@ import {Author} from '../../components/author/Author';
 import {SecondaryButton} from '../../components/button/SecondaryButton';
 import Header from '../../components/header/Header';
 import {HeaderMetaPlaylist} from '../../components/header/HeaderMetaPlaylist';
-import {PlaylistTitle} from "../../components/playlist/PlaylistTitle";
+import {PlaylistTitle} from '../../components/playlist/PlaylistTitle';
 
 const PlaylistPage = ({content, frontmatter, slug}) => {
   const router = useRouter();
@@ -37,7 +37,6 @@ const PlaylistPage = ({content, frontmatter, slug}) => {
       </Layout>
     </>
   );
-
 };
 
 export default PlaylistPage;

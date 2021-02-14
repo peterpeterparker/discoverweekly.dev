@@ -1,4 +1,5 @@
-div.youtube, div.spotify {
+div.youtube,
+div.spotify {
   display: inline-block;
   overflow: hidden;
   border-radius: 1rem;
@@ -8,6 +9,7 @@ div.youtube, div.spotify {
   box-shadow: 2px 2px rgb(124, 58, 237);
 }
 
-html.dark div.youtube, html.dark div.spotify {
+html.dark div.youtube,
+html.dark div.spotify {
   border: 1px solid rgba(48, 54, 61);
 }
