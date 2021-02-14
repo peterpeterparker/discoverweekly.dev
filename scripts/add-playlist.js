@@ -3,7 +3,7 @@ const { readFile, writeFile } = require('fs').promises;
 
 const inquirer = require('inquirer');
 const path = require('path');
-const dateFormat = require("dateformat");
+const format = require('date-fns/format');
 
 const addPlaylist = async () =>{
     const answer = await inquirer.prompt([
@@ -23,7 +23,7 @@ const addPlaylist = async () =>{
 
     const name = answer.name;
 
-    const date = dateFormat(new Date(), "yyyy-mm-dd").toLowerCase();
+    const date = format(new Date(), "yyyy-MM-dd").toLowerCase();
 
     const content = await readPlaylistTemplate();
 
@@ -42,7 +42,7 @@ const formatNameForUrl = (name) => {
 }
 
 const writePlaylist = async (name, content) => {
-    const date = dateFormat(new Date(), "mmmm-yyyy").toLowerCase();
+    const date = format(new Date(), "MMMM-yyyy").toLowerCase();
     const filePath = path.join('content', 'playlists', `${formatNameForUrl(name)}-${date}.md`);
 
     if (existsSync(filePath)) {
