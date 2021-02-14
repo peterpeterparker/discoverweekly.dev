@@ -3,6 +3,11 @@ import {JSDOM} from 'jsdom';
 const youtubeMatch = /{%\syoutube\s(.*)\s%}/g;
 const spotifyMatch = /{%\sspotify\s(playlist|track|artist)\s(.*)\s%}/g;
 
+/**
+ * Important: those Tailwind classes should be use somewhere in the application otherwise they won't be included in the bundle because of the purge process.
+ * @param content
+ * @returns {string}
+ */
 export const format = (content) => {
   const {window} = new JSDOM(`<!DOCTYPE html>${content}`);
 
@@ -10,12 +15,10 @@ export const format = (content) => {
 
   Array.from(elements)?.map((element) => {
     if (element.nodeName === 'HR') {
-      element.className = 'w-24 mt-8 py-4 border-t-2 m-auto border-gray-200 dark:border-gray-600';
+      element.className = 'w-24 mt-8 py-4 border-t-2 m-auto border-gray-100 dark:border-gray-900';
     } else if (element.nodeName === 'H1') {
-      element.className = 'font-bold text-4xl mb-4 mt-10';
+      element.className = 'font-bold text-4xl mb-4 mt-8';
     } else if (element.nodeName === 'P') {
-      element.className = 'break-words';
-
       const youtube = youtubeMatch.exec(element.textContent);
       if (youtube) {
         const div = formatYoutube(window, youtube);
