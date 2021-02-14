@@ -47,7 +47,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/peterpeterparker/discoverweekly.git"
+    "url": "git+https://github.com/peterpeterparker/discoverweekly.dev.git"
   },
   "author": {
     "name": "David Dal Busco",
@@ -55,7 +55,7 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/peterpeterparker/discoverweekly"
+    "url": "https://github.com/peterpeterparker/discoverweekly.dev"
   },
   "homepage": "https://discoverweekly.dev",
   "keywords": [
