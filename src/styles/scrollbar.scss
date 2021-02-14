@@ -4,9 +4,15 @@
 
 ::-webkit-scrollbar-track {
   width: 10px;
-  background: #000;
+  background: rgb(240, 246, 252);
 }
 
 ::-webkit-scrollbar {
   width: 8px;
+}
+
+html.dark {
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
 }
