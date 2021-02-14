@@ -1,7 +1,7 @@
 import fs from 'fs';
 import {join} from 'path';
 
-const dateFormat = require('dateformat');
+const format = require('date-fns/format');
 
 import matter from 'gray-matter';
 
@@ -45,7 +45,7 @@ const summary = async (playlist) => {
 
 const groupPlaylists = (allPlaylists) => {
   return allPlaylists.reduce((acc, playlist) => {
-    const key = dateFormat(new Date(), 'yyyy-mm-dd').toLowerCase();
+    const key = format(new Date(), 'yyyy-MM-dd').toLowerCase();
 
     if (!acc.hasOwnProperty(key)) {
       acc[key] = [];
