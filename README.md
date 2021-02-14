@@ -16,7 +16,7 @@ Make sure you have a recent version of [Node.js installed](https://nodejs.org/en
 Fork and clone this repository. Head over to your terminal and run the following command:
 
 ```
-git clone git@github.com:[YOUR_USERNAME]/discoverweekly.git
+git clone git@github.com:[YOUR_USERNAME]/discoverweekly.dev.git
 cd discoverweekly
 npm ci
 npm run add:playlist
