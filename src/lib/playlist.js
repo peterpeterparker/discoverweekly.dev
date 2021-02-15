@@ -4,6 +4,8 @@ import {join} from 'path';
 const format = require('date-fns/format');
 const setDay = require('date-fns/setDay');
 const isAfter = require('date-fns/isAfter');
+const getDay = require('date-fns/getDay');
+const addWeeks = require('date-fns/addWeeks');
 
 import matter from 'gray-matter';
 
@@ -23,7 +25,9 @@ const getPlaylistBySlug = (slug) => {
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
 
-  const wednesday = setDay(new Date(), 3, {weekStartsOn: 1});
+  const today = getDay(new Date());
+  // On Mondays and Tuesdays last Wednesday should be use as reference.
+  const wednesday = setDay(today === 1 || today === 2 ? addWeeks(new Date(), -1) : new Date(), 3, {weekStartsOn: 1});
 
   return slugs.map((slug) => getPlaylistBySlug(slug)).filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), wednesday));
 };
