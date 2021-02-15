@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 
 import {getAllPlaylistsWithSummary} from '../lib/playlist';
 import {getSpheres} from '../lib/scene';
+import {generateRSS} from '../lib/rss';
 
 import config from '../config.json';
 
@@ -50,6 +51,8 @@ export default Home;
 export async function getStaticProps() {
   const playlists = await getAllPlaylistsWithSummary();
   const spheres = getSpheres();
+
+  generateRSS();
 
   return {
     props: {

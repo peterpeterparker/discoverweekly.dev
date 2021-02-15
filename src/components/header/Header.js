@@ -13,6 +13,8 @@ const Header = () => {
       <meta name="theme-color" content="#161B22" />
 
       <link rel="manifest" href="/site.webmanifest" />
+
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml"/>
     </Head>
   );
 };
