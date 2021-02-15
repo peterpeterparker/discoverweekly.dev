@@ -26,7 +26,7 @@ const getPlaylistBySlug = (slug) => {
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
 
-  if (process.env.NODE_ENV) {
+  if (process.env.NODE_ENV === 'development') {
     return slugs.map((slug) => getPlaylistBySlug(slug));
   }
 
