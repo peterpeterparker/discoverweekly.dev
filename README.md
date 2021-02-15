@@ -1,7 +1,4 @@
 <div align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://discoverweekly.dev"><img src="public/favicon/android-chrome-512x512.png" alt="DiscoverWeekly.dev logo" height="160"></a>
 
   <br/>
@@ -13,6 +10,9 @@
 ![Progressive Web Apps](https://img.shields.io/website?label=Progressive%20Web%20Apps&url=https%3A%2F%2Fdiscoverweekly.dev)
 [![GitHub release](https://img.shields.io/github/release/peterpeterparker/discoverweekly.dev/all?logo=GitHub)](https://github.com/peterpeterparker/discoverweekly.dev/releases/latest)
 [![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%discoverweekly.dev)](https://twitter.com/intent/tweet?url=https%3A%2F%2Fdiscoverweekly.dev&text=Checkout%20DiscoverWeekly.dev%20by%20%40daviddalbusco%20%F0%9F%A4%9F)
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </div>
 
