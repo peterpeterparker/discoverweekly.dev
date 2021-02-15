@@ -1,6 +1,6 @@
 <div align="center">
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://discoverweekly.dev"><img src="public/favicon/android-chrome-512x512.png" alt="DiscoverWeekly.dev logo" height="160"></a>
 
@@ -68,6 +68,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="http://www.facebook.com/renato.lousan"><img src="https://avatars.githubusercontent.com/u/14253584?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Renato Lousan da Silva</b></sub></a><br /><a href="#blog-renatolousan" title="Blogposts">📝</a></td>
+    <td align="center"><a href="https://francoisbest.com"><img src="https://avatars.githubusercontent.com/u/1174092?v=4?s=100" width="100px;" alt=""/><br /><sub><b>François Best</b></sub></a><br /><a href="#blog-franky47" title="Blogposts">📝</a></td>
   </tr>
 </table>
 
