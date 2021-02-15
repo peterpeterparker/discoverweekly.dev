@@ -31,6 +31,24 @@
       "contributions": [
         "blog"
       ]
+    },
+    {
+      "login": "cesc1989",
+      "name": "Francisco Quintero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1375981?v=4",
+      "profile": "https://www.franciscoquintero.com/",
+      "contributions": [
+        "blog"
+      ]
+    },
+    {
+      "login": "andypotts",
+      "name": "Andy Potts",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3458014?v=4",
+      "profile": "http://twitter.com/andypotts_",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,
