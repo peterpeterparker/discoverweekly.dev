@@ -22,6 +22,15 @@
       "contributions": [
         "blog"
       ]
+    },
+    {
+      "login": "sansan88",
+      "name": "Sandro Scalco",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2372120?v=4",
+      "profile": "https://sandro.scalco.ch",
+      "contributions": [
+        "blog"
+      ]
     }
   ],
   "contributorsPerLine": 7,
