@@ -1,4 +1,7 @@
 <div align="center">
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
   <a href="https://discoverweekly.dev"><img src="public/favicon/android-chrome-512x512.png" alt="DiscoverWeekly.dev logo" height="160"></a>
 
   <br/>
@@ -54,3 +57,23 @@ npm run dev
 ## License
 
 MIT © [David Dal Busco](mailto:david.dalbusco@outlook.com)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://www.facebook.com/renato.lousan"><img src="https://avatars.githubusercontent.com/u/14253584?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Renato Lousan da Silva</b></sub></a><br /><a href="#blog-renatolousan" title="Blogposts">📝</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
