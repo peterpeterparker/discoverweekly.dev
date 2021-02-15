@@ -19,7 +19,7 @@ Relaxing Playlist, love to listen in the morning with a cup of coffee to kicksta
 
 # Parov Stelar
 
-Motivation Boooooost!
+Get some energy and move your body!
 
 {% spotify artist 65EXuYHVoehCKqp0kOS6px %}
 
@@ -27,6 +27,14 @@ Motivation Boooooost!
 
 # Bonobo - Kerala
 
-Deep Focus
+Deep Focus Track 1
 
 {% spotify track 5DAjrJqXqYtgr67pVhmUeR %}
+
+---
+
+# HVOB - Azrael
+
+Deep Focus Track 2
+
+{% spotify track 2xeNudarMjWk0szAYH7TQ8 %}
