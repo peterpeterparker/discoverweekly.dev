@@ -2,15 +2,14 @@ import fs from 'fs';
 import {join} from 'path';
 
 const format = require('date-fns/format');
-const setDay = require('date-fns/setDay');
+
 const isAfter = require('date-fns/isAfter');
-const getDay = require('date-fns/getDay');
-const addWeeks = require('date-fns/addWeeks');
 const getWeek = require('date-fns/getWeek');
 
 import matter from 'gray-matter';
 
 import {parse, parseWithSummary} from './utils/markdown.utils';
+import {getLastWeekly, getWeekly} from './utils/date.utils';
 
 const postsDirectory = join(process.cwd(), 'content', 'playlists');
 
@@ -30,11 +29,9 @@ export const getAllPlaylists = () => {
     return slugs.map((slug) => getPlaylistBySlug(slug));
   }
 
-  const today = getDay(new Date());
-  // On Mondays and Tuesdays last Wednesday should be use as reference.
-  const wednesday = setDay(today === 1 || today === 2 ? addWeeks(new Date(), -1) : new Date(), 3, {weekStartsOn: 1});
+  const lastWeekly = getLastWeekly()
 
-  return slugs.map((slug) => getPlaylistBySlug(slug)).filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), wednesday));
+  return slugs.map((slug) => getPlaylistBySlug(slug)).filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), lastWeekly));
 };
 
 export const getAllPlaylistsWithSummary = async () => {
@@ -61,8 +58,10 @@ const summary = async (playlist) => {
 // TODO: wednesday grouping
 const groupPlaylists = (allPlaylists) => {
   return allPlaylists.reduce((acc, playlist) => {
+    const weekly = getWeekly(new Date(playlist.frontmatter.date));
+
     const year = format(new Date(playlist.frontmatter.date), 'yyyy');
-    const week = `${getWeek(new Date(playlist.frontmatter.date), {weekStartsOn: 1})}`;
+    const week = `${getWeek(weekly, {weekStartsOn: 1})}`;
 
     const key = `${year}-${week}`;
 
