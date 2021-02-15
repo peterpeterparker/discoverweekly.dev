@@ -6,6 +6,7 @@ const setDay = require('date-fns/setDay');
 const isAfter = require('date-fns/isAfter');
 const getDay = require('date-fns/getDay');
 const addWeeks = require('date-fns/addWeeks');
+const getWeek = require('date-fns/getWeek');
 
 import matter from 'gray-matter';
 
@@ -24,6 +25,10 @@ const getPlaylistBySlug = (slug) => {
 
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
+
+  if (process.env.NODE_ENV) {
+    return slugs.map((slug) => getPlaylistBySlug(slug));
+  }
 
   const today = getDay(new Date());
   // On Mondays and Tuesdays last Wednesday should be use as reference.
@@ -52,9 +57,14 @@ const summary = async (playlist) => {
   return parseWithSummary(post);
 };
 
+// TODO: sort playlist
+// TODO: wednesday grouping
 const groupPlaylists = (allPlaylists) => {
   return allPlaylists.reduce((acc, playlist) => {
-    const key = format(new Date(), 'yyyy-MM-dd').toLowerCase();
+    const year = format(new Date(playlist.frontmatter.date), 'yyyy');
+    const week = `${getWeek(new Date(playlist.frontmatter.date), {weekStartsOn: 1})}`;
+
+    const key = `${year}-${week}`;
 
     if (!acc.hasOwnProperty(key)) {
       acc[key] = [];
