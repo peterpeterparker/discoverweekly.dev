@@ -29,3 +29,7 @@ export const getWeekly = (playlistDate) => {
   // Else it is published the week after on Wednesday
   return addWeeks(wednesday, 1);
 };
+
+export const compare = (playlistA, playlistB) => {
+  return new Date(playlistB.frontmatter.date).getTime() - new Date(playlistA.frontmatter.date).getTime();
+}

@@ -1,15 +1,16 @@
 import {Card} from '../card/Card';
+import {formatDate} from '../../utils/date.utils';
 
 export const Playlists = ({playlists}) => {
   return (
     <>
-      {Object.keys(playlists).map((key, i) => (
+      {Object.keys(playlists).map((key) => (
         <div key={key}>
-          {renderPlaylistNumber(i)}
+          {renderPlaylistNumber(playlists[key].weekly)}
 
-          <hr className="w-24 pb-6 border-t-2 border-purple-300 m-auto" />
+          <hr className="w-24 border-t-2 border-purple-300 m-auto" />
 
-          {playlists[key].map((playlist) => {
+          {playlists[key].playlists.map((playlist) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;
           })}
         </div>
@@ -17,14 +18,10 @@ export const Playlists = ({playlists}) => {
     </>
   );
 
-  function renderPlaylistNumber(i) {
+  function renderPlaylistNumber(weekly) {
     return (
-      <h2 className="flex justify-center items-end px-5 pt-6 text-sm sm:text-lg text-gray-600 dark:text-gray-50 tracking-wide">
-        Weekly <span className="text-xs mb-0.5 sm:mb-1 ml-2">#</span>
-        {(i + 1).toLocaleString('en-US', {
-          minimumIntegerDigits: 2,
-          useGrouping: false,
-        })}
+      <h2 className="flex justify-center items-center px-5 pt-6 text-sm sm:text-lg text-gray-600 dark:text-gray-50 tracking-wide">
+        {formatDate(weekly)}
       </h2>
     );
   }

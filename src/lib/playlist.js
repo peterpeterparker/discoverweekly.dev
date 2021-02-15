@@ -2,14 +2,13 @@ import fs from 'fs';
 import {join} from 'path';
 
 const format = require('date-fns/format');
-
 const isAfter = require('date-fns/isAfter');
 const getWeek = require('date-fns/getWeek');
 
 import matter from 'gray-matter';
 
 import {parse, parseWithSummary} from './utils/markdown.utils';
-import {getLastWeekly, getWeekly} from './utils/date.utils';
+import {compare, getLastWeekly, getWeekly} from './utils/date.utils';
 
 const postsDirectory = join(process.cwd(), 'content', 'playlists');
 
@@ -26,12 +25,15 @@ export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
 
   if (process.env.NODE_ENV === 'development') {
-    return slugs.map((slug) => getPlaylistBySlug(slug));
+    return slugs.map((slug) => getPlaylistBySlug(slug)).sort((a, b) => compare(a, b));
   }
 
-  const lastWeekly = getLastWeekly()
+  const lastWeekly = getLastWeekly();
 
-  return slugs.map((slug) => getPlaylistBySlug(slug)).filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), lastWeekly));
+  return slugs
+    .map((slug) => getPlaylistBySlug(slug))
+    .filter((playlist) => !isAfter(new Date(playlist.frontmatter.date), lastWeekly))
+    .sort((a, b) => compare(a, b));
 };
 
 export const getAllPlaylistsWithSummary = async () => {
@@ -54,8 +56,6 @@ const summary = async (playlist) => {
   return parseWithSummary(post);
 };
 
-// TODO: sort playlist
-// TODO: wednesday grouping
 const groupPlaylists = (allPlaylists) => {
   return allPlaylists.reduce((acc, playlist) => {
     const weekly = getWeekly(new Date(playlist.frontmatter.date));
@@ -66,10 +66,13 @@ const groupPlaylists = (allPlaylists) => {
     const key = `${year}-${week}`;
 
     if (!acc.hasOwnProperty(key)) {
-      acc[key] = [];
+      acc[key] = {
+        weekly: format(weekly, 'yyyy-MM-dd'),
+        playlists: []
+      };
     }
 
-    acc[key].push(playlist);
+    acc[key].playlists.push(playlist);
 
     return acc;
   }, {});
