@@ -13,7 +13,7 @@ tags: '#rock #psychedelic'
 
 Listening to Tame Impala reminds me of being young, when times were simpler. Love that they're essentially a one man band, Kevin Parker. I've seen Tame Impala live twice and they were great!
 
-{% youtube BgK_Er7WZVg %}
+{% youtube BQKKDNCpVbo %}
 
 ---
 
