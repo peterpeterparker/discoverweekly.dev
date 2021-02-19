@@ -50,7 +50,7 @@ const prepareTweet = (playlists) => {
     twitterNames.forEach((twitterName) => {
       const twitterMention = `@${twitterName} `;
 
-      if ('by ' + twitterCredits.length + twitterMention.length <= maxLength) {
+      if ('by '.length + twitterCredits.length + twitterMention.length <= maxLength) {
         if (twitterCredits === '') {
           twitterCredits += 'by ';
         }
