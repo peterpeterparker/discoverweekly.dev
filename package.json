@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "add:playlist": "node ./scripts/add-playlist.js"
+    "add:playlist": "node ./scripts/add-playlist.js",
+    "twitter": "node ./scripts/twitter.js"
   },
   "dependencies": {
     "@deckdeckgo/utils": "^1.8.0",
