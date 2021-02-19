@@ -1,11 +1,12 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {Profile} from '../profile/Profile';
 import {Twitter} from '../links/Twitter';
 import {GitHub} from '../links/GitHub';
 import {Website} from '../links/Website';
+import {SharePlaylist} from '../share/SharePlaylist';
 
-export const Author = ({frontmatter}) => {
+export const Author = ({frontmatter, slug}) => {
   const {description, twitter, github, website, project, name} = frontmatter;
 
   const [projectName, setProjectName] = useState(undefined);
@@ -35,6 +36,7 @@ export const Author = ({frontmatter}) => {
         {renderGitHub()}
         {renderTwitter()}
         {renderWebsite()}
+        <SharePlaylist slug={slug} name={name} twitter={twitter}></SharePlaylist>
       </div>
     </section>
   );

@@ -29,20 +29,6 @@ export const openSharePlaylist = async (slug, name, twitter) => {
   }
 };
 
-export const openShareWeeklyPlaylists = async (slug, weekly) => {
-  const url = weeklyPlaylistsUrl(slug);
-  const date = formatDate(weekly);
-
-  if (isMobile()) {
-    await shareMobile({
-      text: `Playlists published on ${config.title} (${date})`,
-      url,
-    });
-  } else {
-    await shareSocialDesktop(url, `Checkout these playlists on ${config.twitterUsername} 🤟`, `Checkout these playlists ${url}`);
-  }
-};
-
 const isMobile = () => navigator?.share !== undefined && detectMobile();
 
 const shareSocialDesktop = async (url, twitterText, emailText) => {

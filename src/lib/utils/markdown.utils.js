@@ -19,15 +19,19 @@ export const parseWithSummary = async (post) => {
 
   const {window} = new JSDOM(`<!DOCTYPE html>${content}`);
 
-  const title = window.document.querySelector('h1:first-of-type')?.outerHTML;
+  const count = window.document.querySelectorAll('h1')?.length;
+
+  const title = window.document.querySelector('h1:first-of-type');
+
   const text = window.document.querySelector('p:first-of-type')?.outerHTML;
 
   return {
     ...post,
     content,
     summary: {
-      title,
+      title: title?.innerHTML,
       text,
+      count
     },
   };
 };
