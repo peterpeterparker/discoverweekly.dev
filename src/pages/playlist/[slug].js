@@ -13,8 +13,8 @@ import {PlaylistTitle} from '../../components/playlist/PlaylistTitle';
 const PlaylistPage = ({content, frontmatter, slug}) => {
   const router = useRouter();
 
-  const navigateRoot = () => {
-    router.push('/#main');
+  const navigateRoot = async () => {
+    await router.push('/#main');
   };
 
   return (

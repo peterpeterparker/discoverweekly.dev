@@ -1,8 +1,9 @@
+import fs from 'fs';
+
 import config from '../config.json';
 
 import {getAllPlaylists} from './playlist';
 
-import fs from 'fs';
 import RSS from 'rss';
 
 const generate = () => {

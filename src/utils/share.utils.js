@@ -2,7 +2,8 @@ import {isMobile as detectMobile} from '@deckdeckgo/utils';
 
 import config from '../config.json';
 
-import {playlistUrl} from './playlist.utils';
+import {playlistUrl, weeklyPlaylistsUrl} from './playlist.utils';
+import {formatDate} from './date.utils';
 
 export const openShareDiscoverWeekly = async () => {
   if (isMobile()) {
@@ -11,7 +12,7 @@ export const openShareDiscoverWeekly = async () => {
       url: config.url,
     });
   } else {
-    await shareDiscoverWeeklyDesktop();
+    await shareSocialDesktop(config.url, `Checkout ${config.title} by ${config.twitterUsername} 🤟`, `Checkout ${config.title} ${config.url}`);
   }
 };
 
@@ -24,62 +25,33 @@ export const openSharePlaylist = async (slug, name, twitter) => {
       url,
     });
   } else {
-    await sharePlaylistDesktop(url, name, twitter);
+    await shareSocialDesktop(url, `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.twitterUsername} 🤟`, `Checkout ${name} playlist ${url}`);
+  }
+};
+
+export const openShareWeeklyPlaylists = async (slug, weekly) => {
+  const url = weeklyPlaylistsUrl(slug);
+  const date = formatDate(weekly);
+
+  if (isMobile()) {
+    await shareMobile({
+      text: `Playlists published on ${config.title} (${date})`,
+      url,
+    });
+  } else {
+    await shareSocialDesktop(url, `Checkout these playlists on ${config.twitterUsername} 🤟`, `Checkout these playlists ${url}`);
   }
 };
 
 const isMobile = () => navigator && navigator.share && detectMobile();
 
-const shareDiscoverWeeklyDesktop = async () => {
+const shareSocialDesktop = async (url, twitterText, emailText) => {
   const shareOptions = {
     displayNames: true,
     config: [
       {
         twitter: {
-          socialShareText: `Checkout ${config.title} by ${config.twitterUsername} 🤟`,
-          socialShareUrl: config.url,
-          socialSharePopupWidth: 300,
-          socialSharePopupHeight: 400,
-        },
-      },
-      {
-        linkedin: {
-          socialShareUrl: config.url,
-        },
-      },
-      {
-        email: {
-          socialShareBody: `Checkout ${config.title} ${config.url}`,
-        },
-      },
-      {
-        whatsapp: {
-          socialShareUrl: config.url,
-        },
-      },
-      {
-        copy: {
-          socialShareUrl: config.url,
-        },
-      },
-      {
-        hackernews: {
-          socialShareUrl: config.url,
-        },
-      },
-    ],
-  };
-
-  await shareDesktop(shareOptions);
-};
-
-const sharePlaylistDesktop = async (url, name, twitter) => {
-  const shareOptions = {
-    displayNames: true,
-    config: [
-      {
-        twitter: {
-          socialShareText: `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.title} 🤟`,
+          socialShareText: twitterText,
           socialShareUrl: url,
           socialSharePopupWidth: 300,
           socialSharePopupHeight: 400,
@@ -92,7 +64,7 @@ const sharePlaylistDesktop = async (url, name, twitter) => {
       },
       {
         email: {
-          socialShareBody: `Checkout ${name} playlist ${url}`,
+          socialShareBody: emailText,
         },
       },
       {
