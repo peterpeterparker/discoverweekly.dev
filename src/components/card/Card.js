@@ -41,7 +41,7 @@ export const Card = memo(({playlist}) => {
               {count > 1 ? <span className="text-md pl-2 text-gray-300 dark:text-gray-50">+{count - 1} tips</span> : undefined}
             </div>
           </div>
-          {tags ? <p className="text-sm mt-0.5 'ext-gray-600 dark:text-gray-50">{tags}</p> : u'defined}
+          {tags ? <p className="text-sm mt-0.5 'ext-gray-600 dark:text-gray-50">{tags}</p> : undefined}
           <div className="text-sm mt-4" dangerouslySetInnerHTML={{__html: text}}></div>{' '}
           <div className="flex justify-between">
             <p className="mt-4 block text-sm underline hover:text-purple-600 dark:hover:text-purple-300">More...</p>
