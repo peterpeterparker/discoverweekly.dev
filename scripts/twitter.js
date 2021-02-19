@@ -77,6 +77,8 @@ const getAllPlaylists = () => {
   // TODO: DELETE ME TEST
   const thisWeekWednesday = addDays(new Date(), -2);
 
+  console.log(thisWeekWednesday);
+
   // We assume the batch runs only on Wednesdays
   const todayWednesday = thisWeekWednesday;
   const wednesdayLastWeek = addDays(todayWednesday, -7);
