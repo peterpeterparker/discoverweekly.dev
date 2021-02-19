@@ -1,11 +1,8 @@
 name: Twitter bot
 
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: "0 17 * * 3"
+    - cron: "0 15 * * 3"
 
 jobs:
   build:

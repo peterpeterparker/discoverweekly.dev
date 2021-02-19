@@ -15,7 +15,6 @@ const tweetNewPlaylists = async () => {
   const playlists = getAllPlaylists();
 
   if (!playlists || !playlists.playlists) {
-    console.log('No new playlists, no tweet.');
     return;
   }
 
@@ -49,13 +48,19 @@ const prepareTweet = (playlists) => {
   let twitterCredits = '';
   if (twitterNames && twitterNames.length > 0) {
     twitterNames.forEach((twitterName) => {
-      if (twitterCredits.length + twitterName.length <= maxLength) {
-        twitterCredits += `@${twitterName} `;
+      const twitterMention = `@${twitterName} `;
+
+      if ('by ' + twitterCredits.length + twitterMention.length <= maxLength) {
+        if (twitterCredits === '') {
+          twitterCredits += 'by ';
+        }
+
+        twitterCredits += twitterMention;
       }
     });
   }
 
-  return label.replace('{0}', twitterCredits);
+  return label.replace(placeHolder, twitterCredits);
 };
 
 // I have to rewrite this instead of using existing functions because they don't play well at build time (https://twitter.com/daviddalbusco/status/1362836287103897612)
@@ -74,17 +79,12 @@ const getAllPlaylists = () => {
     };
   });
 
-  // TODO: DELETE ME TEST
-  const thisWeekWednesday = addDays(new Date(), -2);
-
-  console.log(thisWeekWednesday);
-
   // We assume the batch runs only on Wednesdays
-  const todayWednesday = thisWeekWednesday;
+  const todayWednesday = new Date();
   const wednesdayLastWeek = addDays(todayWednesday, -7);
 
   return {
-    weekly: format(thisWeekWednesday, 'yyyy-MM-dd'),
+    weekly: format(todayWednesday, 'yyyy-MM-dd'),
     playlists: allPlaylists.filter(
       (playlist) =>
         !isAfter(new Date(playlist.frontmatter.date), todayWednesday) && isAfter(new Date(playlist.frontmatter.date), wednesdayLastWeek)
