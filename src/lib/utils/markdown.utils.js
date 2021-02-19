@@ -31,7 +31,7 @@ export const parseWithSummary = async (post) => {
     summary: {
       title: title?.innerHTML,
       text,
-      count
+      count,
     },
   };
 };

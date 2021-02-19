@@ -37,4 +37,4 @@ export const generateRSS = () => {
   const rss = generate();
 
   fs.writeFileSync('./public/rss.xml', rss);
-}
+};

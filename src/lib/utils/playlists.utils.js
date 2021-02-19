@@ -37,7 +37,7 @@ export const groupPlaylists = (allPlaylists) => {
     if (!acc.hasOwnProperty(key)) {
       acc[key] = {
         weekly: format(weekly, 'yyyy-MM-dd'),
-        playlists: []
+        playlists: [],
       };
     }
 
@@ -46,4 +46,3 @@ export const groupPlaylists = (allPlaylists) => {
     return acc;
   }, {});
 };
-
