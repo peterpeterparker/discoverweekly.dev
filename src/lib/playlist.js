@@ -1,25 +1,10 @@
 import fs from 'fs';
-import {join} from 'path';
 
-const format = require('date-fns/format');
 const isAfter = require('date-fns/isAfter');
-const getWeek = require('date-fns/getWeek');
 
-import matter from 'gray-matter';
-
-import {parse, parseWithSummary} from './utils/markdown.utils';
-import {compare, getLastWeekly, getWeekly} from './utils/date.utils';
-
-const postsDirectory = join(process.cwd(), 'content', 'playlists');
-
-const getPlaylistBySlug = (slug) => {
-  const realSlug = slug.replace(/\.md$/, '');
-  const fullPath = join(postsDirectory, `${realSlug}.md`);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const {data, content} = matter(fileContents);
-
-  return {slug: realSlug, frontmatter: data, content};
-};
+import {parse} from './utils/markdown.utils';
+import {compare, getLastWeekly} from './utils/date.utils';
+import {getPlaylistBySlug, groupPlaylists, postsDirectory, summary} from './utils/playlists.utils';
 
 export const getAllPlaylists = () => {
   const slugs = fs.readdirSync(postsDirectory);
@@ -36,7 +21,7 @@ export const getAllPlaylists = () => {
     .sort((a, b) => compare(a, b));
 };
 
-export const getAllPlaylistsWithSummary = async () => {
+export const getAllPlaylistsGrouped = async () => {
   const allPlaylists = getAllPlaylists();
 
   const promises = allPlaylists.map((playlist) => summary(playlist));
@@ -51,29 +36,9 @@ export const getPlaylist = async (playlist) => {
   return parse(post);
 };
 
-const summary = async (playlist) => {
-  const post = getPlaylistBySlug(playlist.slug);
-  return parseWithSummary(post);
-};
+export const getWeeklyPlaylists = async (weekly) => {
+  const allPlaylists = await getAllPlaylistsGrouped();
+  const date = weekly.slug.match(/\d{4}-\d{2}-\d{2}/g)?.[0];
 
-const groupPlaylists = (allPlaylists) => {
-  return allPlaylists.reduce((acc, playlist) => {
-    const weekly = getWeekly(new Date(playlist.frontmatter.date));
-
-    const year = format(new Date(playlist.frontmatter.date), 'yyyy');
-    const week = `${getWeek(weekly, {weekStartsOn: 1})}`;
-
-    const key = `${year}-${week}`;
-
-    if (!acc.hasOwnProperty(key)) {
-      acc[key] = {
-        weekly: format(weekly, 'yyyy-MM-dd'),
-        playlists: []
-      };
-    }
-
-    acc[key].playlists.push(playlist);
-
-    return acc;
-  }, {});
+  return Object.keys(allPlaylists).map((key) => allPlaylists[key]).find(playlists => playlists.weekly === date);
 };
