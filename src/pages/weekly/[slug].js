@@ -33,7 +33,7 @@ const WeeklyPage = ({slug, allPlaylists}) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;
           })}
 
-          <div className="max-w-screen-md m-auto p-5 mt-16 pb-14 flex justify-center">
+          <div className="max-w-screen-md m-auto p-5 mt-12 pb-14 flex justify-center">
             <SecondaryButton action={navigateRoot}>Get more playlists</SecondaryButton>
           </div>
         </main>

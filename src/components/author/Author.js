@@ -25,13 +25,13 @@ export const Author = ({frontmatter}) => {
 
   return (
     <section className="max-w-screen-md m-auto p-5 mt-8 flex flex-col justify-center items-center text-center">
-      <Profile frontmatter={frontmatter} infoCss="mt-4" imageCss="big"></Profile>
+      <Profile frontmatter={frontmatter} infoCss="mt-4" standalone={true}></Profile>
 
-      {description ? <p className="max-w-xs mt-2">{description}</p> : undefined}
+      {description ? <p className="max-w-sm mt-0.5">{description}</p> : undefined}
 
       {renderProject()}
 
-      <div className="flex mt-4">
+      <div className="flex mt-2">
         {renderGitHub()}
         {renderTwitter()}
         {renderWebsite()}

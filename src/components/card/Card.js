@@ -5,17 +5,16 @@ import styles from './Card.module.scss';
 import Link from 'next/link';
 
 import {Profile} from '../profile/Profile';
-import {formatDate} from '../../utils/date.utils';
 import {SharePlaylist} from '../share/SharePlaylist';
 
 export const Card = memo(({playlist}) => {
   const {slug, frontmatter, summary} = playlist;
-  const {date, name, twitter} = frontmatter;
+  const {name, twitter, tags} = frontmatter;
   const {title, text} = summary;
 
   return (
     <article className="flex items-center px-5 pt-5 pb-10 md:pb-5">
-      <div className="w-full md:max-w-4xl md:px-8 md:py-4 mx-auto flex flex-col md:flex-row">
+      <div className="w-full md:max-w-4xl md:px-8 md:py-4 mx-auto flex flex-col-reverse md:flex-row">
         {renderProfile()}
 
         {renderPost()}
@@ -41,7 +40,11 @@ export const Card = memo(({playlist}) => {
 
             <SharePlaylist slug={slug} name={name} twitter={twitter}></SharePlaylist>
           </div>
-          <p className="text-xs mt-0.5">{formatDate(date)}</p>
+
+          {
+            tags ? <p className="text-sm mt-0.5 text-gray-600 dark:text-gray-50">{tags}</p> : undefined
+          }
+
           <div className="text-sm mt-4" dangerouslySetInnerHTML={{__html: text}}></div>{' '}
           <p className="mt-4 block text-sm underline">More...</p>
         </div>
