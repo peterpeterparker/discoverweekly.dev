@@ -40,5 +40,8 @@ export const getWeeklyPlaylists = async (weekly) => {
   const allPlaylists = await getAllPlaylistsGrouped();
   const date = weekly.slug.match(/\d{4}-\d{2}-\d{2}/g)?.[0];
 
-  return Object.keys(allPlaylists).map((key) => allPlaylists[key]).find(playlists => playlists.weekly === date);
+  return {
+    slug: weekly.slug,
+    allPlaylists: Object.keys(allPlaylists).map((key) => allPlaylists[key]).find(playlists => playlists.weekly === date)
+  };
 };
