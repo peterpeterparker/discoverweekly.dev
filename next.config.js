@@ -29,17 +29,17 @@ module.exports = {
 
 const nextConfig = {
   images: {
-    domains: ['pbs.twimg.com', 'avatars.githubusercontent.com',
+    domains: ['pbs.twimg.com', 'avatars.githubusercontent.com'],
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
-    dest: 'public,
+    dest: 'public',
   },
   i18n: {
     locales: ['en'],
-    defaultLocale: 'en,
+    defaultLocale: 'en',
   },
-  future: {webpack5: true,
+  future: {webpack5: true},
 };
 
 module.exports = withPlugins([withTM(nextConfig), withPWA(nextConfig)]);
