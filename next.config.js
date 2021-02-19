@@ -21,27 +21,25 @@ const withTM = require('next-transpile-modules')(
 );
 
 const withPlugins = require('next-compose-plugins');
-const withPWA = require('next-pwa')
+const withPWA = require('next-pwa');
 
 module.exports = {
-  future: { webpack5: true }
-}
+  future: {webpack5: true},
+};
 
 const nextConfig = {
   images: {
-    domains: ['pbs.twimg.com', 'avatars.githubusercontent.com'],
+    domains: ['pbs.twimg.com', 'avatars.githubusercontent.com',
   },
   pwa: {
     disable: process.env.NODE_ENV === 'development',
-    dest: 'public',
+    dest: 'public,
   },
   i18n: {
     locales: ['en'],
-    defaultLocale: 'en',
+    defaultLocale: 'en,
   },
-  future: { webpack5: true }
+  future: {webpack5: true,
 };
 
-module.exports = withPlugins(
-  [withTM(nextConfig), withPWA(nextConfig)]
-);
+module.exports = withPlugins([withTM(nextConfig), withPWA(nextConfig)]);

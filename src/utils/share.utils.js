@@ -2,8 +2,7 @@ import {isMobile as detectMobile} from '@deckdeckgo/utils';
 
 import config from '../config.json';
 
-import {playlistUrl, weeklyPlaylistsUrl} from './playlist.utils';
-import {formatDate} from './date.utils';
+import {playlistUrl} from './playlist.utils';
 
 export const openShareDiscoverWeekly = async () => {
   if (isMobile()) {
@@ -12,7 +11,11 @@ export const openShareDiscoverWeekly = async () => {
       url: config.url,
     });
   } else {
-    await shareSocialDesktop(config.url, `Checkout ${config.title} by ${config.twitterUsername} 🤟`, `Checkout ${config.title} ${config.url}`);
+    await shareSocialDesktop(
+      config.url,
+      `Checkout ${config.title} by ${config.twitterAuthorUsername} 🤟`,
+      `Checkout ${config.title} ${config.url}`
+    );
   }
 };
 
@@ -25,7 +28,11 @@ export const openSharePlaylist = async (slug, name, twitter) => {
       url,
     });
   } else {
-    await shareSocialDesktop(url, `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.twitterUsername} 🤟`, `Checkout ${name} playlist ${url}`);
+    await shareSocialDesktop(
+      url,
+      `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.twitterAuthorUsername} 🤟`,
+      `Checkout ${name} playlist ${url}`
+    );
   }
 };
 

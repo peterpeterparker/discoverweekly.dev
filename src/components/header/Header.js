@@ -14,7 +14,7 @@ const Header = () => {
 
       <link rel="manifest" href="/site.webmanifest" />
 
-      <link rel="alternate" type="application/rss+xml" href="/rss.xml"/>
+      <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
     </Head>
   );
 };

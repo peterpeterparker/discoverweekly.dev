@@ -15,7 +15,7 @@ export const getWeekly = (playlistDate) => {
   const day = getDay(playlistDate);
 
   // If wednesday, it is published at that date
-  if (day === 3)  {
+  if (day === 3) {
     return playlistDate;
   }
 
@@ -32,4 +32,4 @@ export const getWeekly = (playlistDate) => {
 
 export const compare = (playlistA, playlistB) => {
   return new Date(playlistB.frontmatter.date).getTime() - new Date(playlistA.frontmatter.date).getTime();
-}
+};

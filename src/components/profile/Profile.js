@@ -15,9 +15,7 @@ export const Profile = ({frontmatter, infoCss, standalone}) => {
       <div className={`flex flex-col md:text-center md:mt-3 ${infoCss}`}>
         {renderName()}
 
-        {
-          !standalone ? <p className="text-xs mt-0.5 text-gray-600 dark:text-gray-50">{formatDate(date)}</p> : undefined
-        }
+        {!standalone ? <p className="text-xs mt-0.5 text-gray-600 dark:text-gray-50">{formatDate(date)}</p> : undefined}
       </div>
     </>
   );

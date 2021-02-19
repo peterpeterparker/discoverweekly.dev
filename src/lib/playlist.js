@@ -42,6 +42,8 @@ export const getWeeklyPlaylists = async (weekly) => {
 
   return {
     slug: weekly.slug,
-    allPlaylists: Object.keys(allPlaylists).map((key) => allPlaylists[key]).find(playlists => playlists.weekly === date)
+    allPlaylists: Object.keys(allPlaylists)
+      .map((key) => allPlaylists[key])
+      .find((playlists) => playlists.weekly === date),
   };
 };

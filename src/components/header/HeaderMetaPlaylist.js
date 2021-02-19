@@ -21,7 +21,7 @@ export const HeaderMetaPlaylist = ({slug, frontmatter}) => {
       <meta property="og:image" content={`${config.url}${config.image}`} />
       <meta property="og:image:type" content="image/png" />
 
-      <meta name="twitter:site" content={`@${twitter}`} />
+      <meta name="twitter:site" content={config.twitterUsername} />
       <meta name="twitter:creator" content={`@${twitter}`} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={config.description} />
