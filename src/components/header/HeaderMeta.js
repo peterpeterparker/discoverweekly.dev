@@ -15,7 +15,7 @@ export const HeaderMeta = () => {
       <meta property="og:image:type" content="image/png" />
 
       <meta name="twitter:site" content={config.twitterUsername} />
-      <meta name="twitter:creator" content={config.twitterAuthorUsername} />
+      <meta name="twitter:creator" content={config.twitterUsername} />
       <meta name="twitter:title" content={config.title} />
       <meta name="twitter:description" content={config.description} />
       <meta name="twitter:image:src" content={`${config.url}${config.image}`} />

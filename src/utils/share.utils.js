@@ -30,7 +30,7 @@ export const openSharePlaylist = async (slug, name, twitter) => {
   } else {
     await shareSocialDesktop(
       url,
-      `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.twitterAuthorUsername} 🤟`,
+      `Checkout ${twitter ? '@' + twitter : name} playlist on ${config.twitterUsername} 🤟`,
       `Checkout ${name} playlist ${url}`
     );
   }
