@@ -10,7 +10,6 @@ import Header from '../components/header/Header';
 import {Layout} from '../components/layout/Layout';
 import {Hero} from '../components/hero/Hero';
 import {HeaderMeta} from '../components/header/HeaderMeta';
-import {ShareDesktop} from '../components/share/ShareDesktop';
 import {SecondaryButton} from '../components/button/SecondaryButton';
 import {Playlists} from '../components/playlists/Playlists';
 const Background = dynamic(() => import('../components/background/Background'), {ssr: false});
@@ -40,8 +39,6 @@ export const Home = ({playlists, spheres}) => {
           </div>
         </main>
       </Layout>
-
-      <ShareDesktop></ShareDesktop>
     </>
   );
 };

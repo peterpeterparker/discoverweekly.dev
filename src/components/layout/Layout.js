@@ -1,5 +1,6 @@
 import {Navbar} from '../nav/Navbar';
 import {Footer} from '../footer/Footer';
+import {ShareDesktop} from '../share/ShareDesktop';
 
 export const Layout = ({children}) => {
   return (
@@ -9,6 +10,8 @@ export const Layout = ({children}) => {
       {children}
 
       <Footer></Footer>
+
+      <ShareDesktop></ShareDesktop>
     </>
   );
 };
