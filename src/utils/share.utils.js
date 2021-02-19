@@ -43,7 +43,7 @@ export const openShareWeeklyPlaylists = async (slug, weekly) => {
   }
 };
 
-const isMobile = () => navigator && navigator.share && detectMobile();
+const isMobile = () => navigator?.share !== undefined && detectMobile();
 
 const shareSocialDesktop = async (url, twitterText, emailText) => {
   const shareOptions = {
