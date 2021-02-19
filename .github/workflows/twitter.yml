@@ -1,0 +1,29 @@
+name: Twitter bot
+
+on:
+  push:
+    branches:
+      - master
+    schedule:
+      - cron: "0 17 * * 3"
+
+jobs:
+  build:
+    name: Tweet about the new playlists
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run Twitter bot
+        run: npm run twitter
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_API_ACCESS_TOKEN: ${{ secrets.TWITTER_API_ACCESS_TOKEN }}
+          TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
