@@ -24,11 +24,13 @@ export const Playlists = ({playlists}) => {
   function renderPlaylistNumber(weekly) {
     return (
       <Link as={`/weekly/playlists-${weekly}`} href="/weekly/[slug]">
-        <h2
-          tabIndex={0}
-          className="inline-block cursor-pointer px-5 pt-6 text-sm sm:text-lg text-gray-600 dark:text-gray-50 hover:text-purple-600 dark:hover:text-purple-300 underline tracking-wide">
-          {formatDate(weekly)}
-        </h2>
+        <a aria-label="Link to weekly playlists">
+          <h2
+            tabIndex={0}
+            className="inline-block cursor-pointer px-5 pt-6 text-sm sm:text-lg text-gray-600 dark:text-gray-50 hover:text-purple-600 dark:hover:text-purple-300 underline tracking-wide">
+            {formatDate(weekly)}
+          </h2>
+        </a>
       </Link>
     );
   }
