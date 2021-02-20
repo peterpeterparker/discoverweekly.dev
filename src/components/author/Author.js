@@ -32,7 +32,7 @@ export const Author = ({frontmatter, slug}) => {
 
       {renderProject()}
 
-      <div className="flex mt-2">
+      <div className="flex mt-6">
         {renderGitHub()}
         {renderTwitter()}
         {renderWebsite()}
@@ -66,7 +66,7 @@ export const Author = ({frontmatter, slug}) => {
       return undefined;
     }
 
-    return <Twitter url={`https://twitter.com/${twitter}`} label={`Twitter @${twitter}`} small={true}></Twitter>;
+    return <Twitter url={`https://twitter.com/${twitter}`} label={`Twitter @${twitter}`} small={false}></Twitter>;
   }
 
   function renderGitHub() {
@@ -74,7 +74,7 @@ export const Author = ({frontmatter, slug}) => {
       return undefined;
     }
 
-    return <GitHub url={`https://github.com/${github}`} label={`GitHub ${github}`} small={true}></GitHub>;
+    return <GitHub url={`https://github.com/${github}`} label={`GitHub ${github}`} small={false}></GitHub>;
   }
 
   function renderWebsite() {
@@ -82,6 +82,6 @@ export const Author = ({frontmatter, slug}) => {
       return undefined;
     }
 
-    return <Website url={website} label={`Personal website`} small={true}></Website>;
+    return <Website url={website} label={`Personal website`} small={false}></Website>;
   }
 };
