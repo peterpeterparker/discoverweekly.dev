@@ -1,7 +1,7 @@
 export const Website = ({url, label, small, color = 'text-black dark:text-white'}) => {
   return (
     <a href={url} rel="noopener norefferer" aria-label={label} className={`ml-4 mt-2 hover:text-purple-600 ${color}`}>
-      <svg className={`${small ? 'h-6 w-6' : 'h-8 w-8'} fill-current`} viewBox="0 0 512 512">
+      <svg className={`${small ? 'h-4 w-4' : 'h-6 w-6'} fill-current`} viewBox="0 0 512 512">
         <path
           d="M256 48C141.13 48 48 141.13 48 256s93.13 208 208 208 208-93.13 208-208S370.87 48 256 48z"
           fill="none"

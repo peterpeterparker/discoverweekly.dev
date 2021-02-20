@@ -10,6 +10,8 @@ export const Footer = () => {
 
         {renderMore()}
       </div>
+
+      <Social footer={true}></Social>
     </footer>
   );
 
