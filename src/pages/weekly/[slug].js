@@ -27,7 +27,7 @@ const WeeklyPage = ({slug, allPlaylists}) => {
 
       <Layout>
         <main className="bg-gray-50 dark:bg-black pt-16 dark:text-white">
-          <PlaylistsTitle weekly={weekly} slug={slug}></PlaylistsTitle>
+          <PlaylistsTitle weekly={weekly}></PlaylistsTitle>
 
           {playlists.map((playlist) => {
             return <Card playlist={playlist} key={playlist.slug}></Card>;
