@@ -56,6 +56,7 @@ export const Navbar = () => {
                 />
                 <rect fill="currentColor" x="2195.83" y="3153.7" width="522.341" height="2277.73" />
               </svg>
+              <span className="hidden">DiscoverWeekly.dev</span>
             </a>
           </div>
 

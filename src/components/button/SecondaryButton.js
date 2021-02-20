@@ -9,7 +9,7 @@ export const SecondaryButton = ({
     <button
       onClick={action}
       type="button"
-      className={`${styles.button} ${color} border-2 border-purple-600 capitalize rounded-full px-4 py-2 m-2 transition duration-500 ease select-none focus:outline-none focus:shadow-outline`}>
+      className={`${styles.button} ${color} border-2 border-purple-600 capitalize rounded-full px-4 py-2 m-2 transition duration-500 ease select-none`}>
       {children}
     </button>
   );
