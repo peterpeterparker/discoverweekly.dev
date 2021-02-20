@@ -9,7 +9,11 @@ export const Social = () => {
     <div className="flex pt-8">
       <GitHub url={config.github} label="GitHub" small={true} color="text-white dark:text-white"></GitHub>
 
-      <Twitter url={config.twitterUsername} label={`Twitter`} small={true} color="text-white dark:text-white"></Twitter>
+      <Twitter
+        url={`https://twitter.com/${config.twitterUsername}`}
+        label={`Twitter`}
+        small={true}
+        color="text-white dark:text-white"></Twitter>
 
       <ShareDiscoverWeekly></ShareDiscoverWeekly>
 
