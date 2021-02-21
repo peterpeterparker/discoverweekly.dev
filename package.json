@@ -20,7 +20,7 @@
     "remark": "^13.0.0",
     "remark-html": "^13.0.1",
     "three": "^0.125.2",
-    "web-social-share": "^7.0.0"
+    "web-social-share": "^7.1.0"
   },
   "devDependencies": {
     "@react-three/drei": "^3.5.1",
