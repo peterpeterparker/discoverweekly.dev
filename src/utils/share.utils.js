@@ -51,7 +51,7 @@ const shareSocialDesktop = async (url, twitterText, emailText) => {
         },
       },
       {
-        linkedin: {
+        facebook: {
           socialShareUrl: url,
         },
       },
