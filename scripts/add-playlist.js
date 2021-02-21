@@ -68,7 +68,7 @@ const writePlaylist = async (name, content) => {
 
     if (filePath) {
       console.log('\n✅ Cool! A new playlist has been initialized.\n');
-      console.log(`👉 Continue by editing the Markdown file ${filePath}.\n`);
+      console.log(`👉 Continue by editing the Markdown file ${filePath}\n`);
     }
   } catch (error) {
     console.error(error);
