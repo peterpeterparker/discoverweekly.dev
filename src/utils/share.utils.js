@@ -56,12 +56,22 @@ const shareSocialDesktop = async (url, twitterText, emailText) => {
         },
       },
       {
+        hackernews: {
+          socialShareUrl: url,
+        },
+      },
+      {
+        reddit: {
+          socialShareUrl: url,
+        },
+      },
+      {
         whatsapp: {
           socialShareUrl: url,
         },
       },
       {
-        hackernews: {
+        telegram: {
           socialShareUrl: url,
         },
       },
