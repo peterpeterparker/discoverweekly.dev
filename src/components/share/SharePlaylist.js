@@ -2,7 +2,7 @@ import {openSharePlaylist} from '../../utils/share.utils';
 
 export const SharePlaylist = ({slug, name, twitter}) => {
   const share = async ($event) => {
-    $event.stopPropagation();
+    $event.preventDefault();
 
     await openSharePlaylist(slug, name, twitter);
   };
@@ -10,7 +10,7 @@ export const SharePlaylist = ({slug, name, twitter}) => {
   return (
     <button
       role="button"
-      onClick={async ($event) => await share($event)}
+      onClick={($event) => share($event)}
       aria-label={`Share ${name} playlist`}
       className="ml-4 mt-2 hover:text-purple-600 dark:hover:text-purple-300">
       <svg className="h-6 w-6 fill-current" viewBox="0 0 512 512">
