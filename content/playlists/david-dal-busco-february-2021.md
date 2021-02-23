@@ -1,7 +1,11 @@
 ---
-date: '2021-02-23' name: 'David Dal Busco' description: 'Creator of DeckDeckGo by night | Freelancer by day'
+date: '2021-02-23'
+name: 'David Dal Busco'
+description: 'Creator of DeckDeckGo by night | Freelancer by day'
 profile: 'https://pbs.twimg.com/profile_images/941274539979366400/bTKGkd-O_400x400.jpg'
-twitter: 'daviddalbusco' github: 'peterpeterparker' website: 'https://daviddalbusco.com'
+twitter: 'daviddalbusco'
+github: 'peterpeterparker'
+website: 'https://daviddalbusco.com'
 project: 'https://deckdeckgo.com'
 tags: '#electronic #hiphop #rock'
 ---
