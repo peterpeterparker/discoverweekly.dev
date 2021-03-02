@@ -7,7 +7,7 @@ twitter: 'daviddalbusco'
 github: 'peterpeterparker'
 website: 'https://daviddalbusco.com'
 project: 'https://deckdeckgo.com'
-tags: '#postmetal #blackmetal'
+tags: '#postmetal #postrock'
 ---
 
 # Deafheaven
