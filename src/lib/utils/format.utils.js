@@ -1,7 +1,7 @@
 import {JSDOM} from 'jsdom';
 
 const youtubeMatch = /{%\syoutube\s(.*)\s%}/g;
-const spotifyMatch = /{%\sspotify\s(playlist|track|artist)\s(.*)\s%}/g;
+const spotifyMatch = /{%\sspotify\s(playlist|track|album|artist)\s(.*)\s%}/g;
 
 /**
  * Important: those Tailwind classes should be use somewhere in the application otherwise they won't be included in the bundle because of the purge process.

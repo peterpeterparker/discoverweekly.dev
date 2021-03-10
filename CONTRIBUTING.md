@@ -56,3 +56,4 @@ The music material can either be a `Youtube` video or a `Spotify` link. Please p
 - Spotify (artist): `{% spotify artist 65EXuYHVoehCKqp0kOS6px %}`
 - Spotify (track): `{% spotify track 2u8NmvhYX6wiviyxJTOhEi %}`
 - Spotify (playlist): `{% spotify playlist 37i9dQZF1DX9RwfGbeGQwP %}`
+- Spotify (album): `{% spotify album 7a6DbfLdir3tz1U8xmCzaM %}`
