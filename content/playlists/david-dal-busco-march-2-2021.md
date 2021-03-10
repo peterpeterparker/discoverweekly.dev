@@ -12,7 +12,7 @@ tags: '#postmetal #postrock'
 
 # Mogwai
 
-Since I started to get vinyl, I began to preorder those of bands I like while restraining me to listen to anything on Spotify before actually getting the physical material.  
+Since I started to get vinyl, I preorder those of bands I like while restraining me to listen to anything on Spotify before actually getting the physical material.  
 
 That's why I am quite excited to have received today both Mogwai and Cult Of Luna new albums 🥳. 
 
