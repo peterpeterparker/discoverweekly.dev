@@ -41,3 +41,5 @@ yarn-error.log*
 public/sw.js
 public/workbox-*.js
 public/rss.xml
+public/robots.txt
+public/sitemap.xml
